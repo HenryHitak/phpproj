@@ -12,10 +12,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="login">Login</a>
+                    <a href="./login.php">Login</a>
                 </li>
                 <li>
-                    <a href="logout">Logout</a>
+                    <a href="./signout.php">Logout</a>
                 </li>
             </ul>
         </nav>
