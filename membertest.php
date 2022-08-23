@@ -64,7 +64,7 @@
             echo "<option>$list</option>";
         }
         echo "</select>";
-        echo "<button class='btn btn-outline-secondary' type='button' id='button-addon2'>Sort</button>";
+        echo "<button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>";
         echo "</form>";
 
         echo "<form class=input-group mb-3>";
