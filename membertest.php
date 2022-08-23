@@ -13,7 +13,7 @@
         <div class="User_Table">
                 <?php
                     function tabledisplay($details){
-                        return "<tr><td>$details->id</td><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./coursework3edit.php?idx=$idx'>Edit</a></td><td><a href='#'>Del</a></td></tr>";
+                        return "<tr><td>$details->id</td><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./coursework3edit.php?idx=$idx'>Edit</a></td><td><a href='./userDelet.php'>Del</a></td></tr>";
                     }
 
                     $fileHandler = fopen('./files/data.json','r');
