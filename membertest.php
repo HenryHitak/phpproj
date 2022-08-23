@@ -11,50 +11,77 @@
     <style>
         .User_Table{
             width : 1200px;
-            header : 300px;
+            height: 500px;
+            border-bottom : 1px solid black;
             overflow: auto;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .table-top {
+            width : 1200px;
+            display : flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            width : 1200px;
+            display : flex;
+            justify-content: right;
+        }
+
+        form {
+            width:200px !important;
+            display : flex;
         }
     </style>
     <title>table</title>
 </head>
 <body>
-    <div class="User_Table">
-        <?php
-            function tabledisplay($details,$num){
-                return "<tr><th scope='row'>$num</th><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./coursework3edit.php?idx=$idx'>Edit</a></td><td><a href='./userDelet.php'>Del</a></td></tr>";
-            }
+    <?php
+        function tabledisplay($details,$idx,$num){
+            return "<tr><th scope='row'>$num</th><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./userviewEdit.php?idx=$idx' class='btn btn-light'>Edit</a></td><td><a href='./userDelet.php' class='btn btn-light'>Del</a></td></tr>";
+        }
 
-            $fileHandler = fopen('./files/data.json','r');
-            $data = fread($fileHandler,filesize('./files/data.json'));
-            fclose($fileHandler);
-            $userData = json_decode($data);
+        $fileHandler = fopen('./files/data.json','r');
+        $data = fread($fileHandler,filesize('./files/data.json'));
+        fclose($fileHandler);
+        $userData = json_decode($data);
+    
+
+        //sorting and searching'
+        echo "<div class='table-top'><form method='POST'>";
+        echo "<select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>";
+        echo "<option selected>All</option>";
+        $depart = [];
+        foreach($userData as $option){
+            array_push($depart,$option->user_type);
+        }
+        $deparList=array_unique($depart);
+        foreach($deparList as $list){
+            echo "<option>$list</option>";
+        }
+        echo "</select>";
+        echo "<button class='btn btn-outline-secondary' type='button' id='button-addon2'>Sort</button>";
+        echo "</form>";
+
+        echo "<form class=input-group mb-3>";
+        echo "<input type='text' class='form-control' placeholder='Search' aria-label='Search' aria-describedby='button-addon2'>";
+        echo "<button class='btn btn-outline-secondary' type='button' id='button-addon2'>Button</button>";
+        echo "</form></div>";
+
+        /*
+        foreach($userData as $idx => $details){
+            foreach($details as $key => $value){
+                echo $key;
+            }
+        }
+        */
         
-
-
-            //sorting by usertype 'Dortor' or 'General' or 'Admin'
-            echo "<form method='POST'>";
-            echo "Type :  ";
-            echo "<select name='dep' style='width: 80px;'>";
-            echo "<option selected>All</option>";
-            $depart = [];
-            foreach($userData as $option){
-                array_push($depart,$option->user_type);
-            }
-            $deparList=array_unique($depart);
-            foreach($deparList as $list){
-                echo "<option>$list</option>";
-            }
-            echo "</select>";
-            echo "<button type='submit'>Sort</button>";
-            echo "</form>";
-
-            /*foreach($userData as $idx => $details){
-                foreach($details as $key => $value){
-                    echo $key;
-                }
-            }
-            */
-        ?>
+    ?>
+    <div class="User_Table">
         <table class="table">
             <thead>
                 <tr>
@@ -70,13 +97,13 @@
                 <th scope="col">Delet</th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
-            <?php
+            <tbody class="table-group-divider text">
+                <?php
                     // if it's not "POST" show everything
                     if($_SERVER['REQUEST_METHOD']!=="POST"){
                         $num = 1;
                         foreach($userData as $idx => $details){
-                            echo tabledisplay($details,$num);
+                            echo tabledisplay($details,$idx,$num);
                             $num++;
                         }
                     
@@ -86,7 +113,7 @@
                         $numa = 1;
                         foreach($userData as $idx => $details){
                             if($dep == $details->user_type){
-                                echo tabledisplay($details,$numa);
+                                echo tabledisplay($details,$idx,$numa);
                                 $numa++;
                             }
                         }
@@ -94,7 +121,7 @@
                             if($_SERVER['REQUEST_METHOD']=="POST"){
                                 $numb = 1;
                                 foreach($userData as $idx => $details){
-                                    echo tabledisplay($details,$numb);
+                                    echo tabledisplay($details,$idx,$numb);
                                     $numb++;
                                 }
                             }
@@ -104,6 +131,9 @@
             </tbody>
         </table>
     </div>
+    <section class="button">
+        <button type="button" class="btn btn-primary">+New User</button>
+    </section>
 </main>
 
 <!-- JavaScript Bundle with Popper -->
