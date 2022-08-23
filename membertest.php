@@ -8,13 +8,20 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .User_Table{
+            width : 1200px;
+            header : 300px;
+            overflow: auto;
+        }
+    </style>
     <title>table</title>
 </head>
 <body>
     <div class="User_Table">
         <?php
-            function tabledisplay($details){
-                return "<tr><th scope='row'>$details->id</th><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./coursework3edit.php?idx=$idx'>Edit</a></td><td><a href='./userDelet.php'>Del</a></td></tr>";
+            function tabledisplay($details,$num){
+                return "<tr><th scope='row'>$num</th><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./coursework3edit.php?idx=$idx'>Edit</a></td><td><a href='./userDelet.php'>Del</a></td></tr>";
             }
 
             $fileHandler = fopen('./files/data.json','r');
@@ -27,7 +34,7 @@
             //sorting by usertype 'Dortor' or 'General' or 'Admin'
             echo "<form method='POST'>";
             echo "Type :  ";
-            echo "<select name='dep' style='width: 200px;'>";
+            echo "<select name='dep' style='width: 80px;'>";
             echo "<option selected>All</option>";
             $depart = [];
             foreach($userData as $option){
@@ -67,22 +74,28 @@
             <?php
                     // if it's not "POST" show everything
                     if($_SERVER['REQUEST_METHOD']!=="POST"){
+                        $num = 1;
                         foreach($userData as $idx => $details){
-                            echo tabledisplay($details);
+                            echo tabledisplay($details,$num);
+                            $num++;
                         }
                     
                     //display only selected usertype but if 'All' is selected show everything again(how...)!
                     }elseif($_SERVER['REQUEST_METHOD']=="POST"){
                         $dep = $_POST["dep"];
+                        $numa = 1;
                         foreach($userData as $idx => $details){
                             if($dep == $details->user_type){
-                                echo tabledisplay($details);
+                                echo tabledisplay($details,$numa);
+                                $numa++;
                             }
                         }
                         if($dep == "All"){
                             if($_SERVER['REQUEST_METHOD']=="POST"){
+                                $numb = 1;
                                 foreach($userData as $idx => $details){
-                                    echo tabledisplay($details);
+                                    echo tabledisplay($details,$numb);
+                                    $numb++;
                                 }
                             }
                         }
