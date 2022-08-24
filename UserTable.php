@@ -53,14 +53,7 @@
     <select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>;
     <option selected>All</option>;
     <?php
-        $depart = [];
-        foreach($userData as $option){
-            array_push($depart,$option->user_type);
-        }
-        $deparList=array_unique($depart);
-        foreach($deparList as $list){
-            echo "<option>$list</option>";
-        }
+
     ?>
     </select>
     <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
