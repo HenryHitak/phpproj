@@ -113,6 +113,53 @@
                 ?>
             </tbody>
         </table>
+
+        <!--Pagelist-->
+        <p class="my_p">
+        <?php
+            $page_max = 10;
+            $total = $rows;
+            $page_check = $total/$page_max;
+            $page_total = (int)($page_check);
+            $page_num = isset($_GET['page_num']) == '' ? 1 : $_GET['page_num'];
+            
+            $pg_cal = (int)(($page_num-1) / $page_max) * $page_max;
+            $pg_start =  $pg_cal+1;
+            $pg_end = $pg_start + $page_max;
+            $prev = $pg_start-$page_max;
+            
+            if($page_total < $page_check)
+                $page_total += 1;
+            
+            if($page_num == 1)
+                $skip_record=0;
+            else
+                $skip_record=($page_num-1)*$page_max;
+            if($page_num != '1'){
+            echo("<a href='$_SERVER[PHP_SELF]?page_num=1'>[pre]</a> ");
+            };
+
+            if($page_num >= 11)
+            echo("<a href='$_SERVER[PHP_SELF]?page_num=$prev'>[next]</a> ");
+
+            for($page=$pg_start; $page < $pg_end; $page++) {
+            if($page <= $page_total){
+                if($page_num == $page){
+                    echo "[$page] ";
+                }else{
+                echo "<a href=$_SERVER[PHP_SELF]?page_num=$page>[$page]</a> ";
+                }
+            }
+            }
+
+            if($page_num < $page_total)
+            echo("<a href='$_SERVER[PHP_SELF]?page_num=$pg_end'>[next]</a> ");
+
+            if($page_num != $page_total)
+            echo("<a href='$_SERVER[PHP_SELF]?page_num=$page_total'>[end]</a> ");
+        ?>
+        </p>
+
     </div>
     <section class="button">
         <button type="button" class="btn btn-primary">+New User</button>

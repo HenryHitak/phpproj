@@ -1,10 +1,14 @@
+<?php
+    include './DBlink.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Edit</title>
     <style>
         *{
             margin:0;
@@ -77,12 +81,13 @@
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $addr = $_POST['addr'];
-
         $idx = $_GET['idx'];
 
+        /*
         $filehandler = fopen('./files/data.json','r');
         $user = json_decode(fread($filehandler,filesize('./files/data.json')));
         fclose($filehandler);
+        */
 
         $user[$idx]->id = $id;
         $user[$idx]->first_name = $fname;
@@ -95,12 +100,14 @@
         $user[$idx]->phone = $phone;
         $user[$idx]->address = $addr;
 
+        /*
         $filehandler = fopen('./files/data.json','w');
         $stringData = json_encode($user);
 
         fwrite($filehandler,$stringData);
         fclose($filehandler);
         echo "<h3>Your changes have been saved successfully.</h3>";
+        */
     }
 
     if(isset($_GET['idx'])){
