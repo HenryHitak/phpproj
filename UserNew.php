@@ -18,11 +18,18 @@
             <label for="dob" class="form-label">Date of Birth</label>
             <input type="date" name="dob" class="form-control" require>
             <label for="gender" class="form-label">Gender</label>
-            <input type="text" name="gender" class="form-control" require>
+            <select name="gender" class="form-control" require>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="occupation" class="form-label">User Type</label>
-            <input type="text" name="occupation" class="form-control" require>
+            <select name="occupation" class="form-control" require>
+                <option value="admin">admin</option>
+                <option value="general">general</option>
+                <option value="doctor">doctor</option>
+            </select>
             <label for="email" class="form-label">Email address</label>
             <input type="email" name="email" class="form-control" require>
             <label for="pass" class="form-label">Password</label>

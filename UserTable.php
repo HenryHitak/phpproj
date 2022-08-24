@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <style>
         .User_Table{
-            width : 1200px;
+            width : 1300px;
             height: 500px;
             border-bottom : 1px solid black;
         }
@@ -24,19 +24,19 @@
         }
 
         .table-top {
-            width : 1200px;
+            width : 1300px;
             display : flex;
             justify-content: space-between;
         }
 
         .button {
-            width : 1200px;
+            width : 1300px;
             display : flex;
             justify-content: right;
         }
 
         .table_page {
-            width: 1200px;
+            width: 1300px;
             display : flex;
             justify-content: center;
         }
