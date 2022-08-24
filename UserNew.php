@@ -17,8 +17,12 @@
             <input type="text" name="lname" class="form-control" require>
             <label for="dob" class="form-label">Date of Birth</label>
             <input type="date" name="dob" class="form-control" require>
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" name="gender" class="form-control" require>
         </div>
         <div class="mb-3">
+            <label for="occupation" class="form-label">User Type</label>
+            <input type="text" name="occupation" class="form-control" require>
             <label for="email" class="form-label">Email address</label>
             <input type="email" name="email" class="form-control" require>
             <label for="pass" class="form-label">Password</label>
@@ -37,14 +41,14 @@
             $dbUsername = "root";
             $dbServername = "localhost";
             $dbPass = "";
-            $dbName = "User_DB";
+            $dbName = "Hey_Doc";
 
             $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbName);
 
             if($dbCon->connect_error){
                 die("Connection error ".$dbCon->connect_error);
             }else{
-                $insertCmd = "INSERT INTO user_tb (firstName,lastName,email,pass,dob,phone,addr,salt) VALUES ('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['pass']."','".$_POST['dob']."','".$_POST['phone']."','".$_POST['addr']."','salt')";
+                $insertCmd = "INSERT INTO User_DB (occupation,firstName,lastName,gender,dob,email,pass,phone,addr,salt) VALUES ('".$_POST['occupation']."','".$_POST['fname']."','".$_POST['lname']."','".$_POST['gender']."','".$_POST['dob']."','".$_POST['email']."','".$_POST['pass']."','".$_POST['phone']."','".$_POST['addr']."','salt')";
                 $result = $dbCon->query($insertCmd);
     
                 if($result === true){

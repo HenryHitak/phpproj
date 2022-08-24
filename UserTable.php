@@ -73,8 +73,9 @@
                 <th scope="col">Id</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
-                <th scope="col">User Type</th>
-                <th scope="col">ID</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Type</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Address</th>
@@ -104,7 +105,7 @@
                     else
                         $skip_record=($page_num-1)*$pageMax;
 
-                    $sql="SELECT * FROM user_tb ORDER BY user_id DESC LIMIT $skip_record,$pageMax";
+                    $sql="SELECT * FROM User_DB ORDER BY user_num DESC LIMIT $skip_record,$pageMax";
                     $result = mysqli_query($conn,$sql);
 
                     //get userdata in table
@@ -112,6 +113,9 @@
                         $no = $row['user_id'];
                         $fname = $row['firstName'];
                         $lname = $row['lastName'];
+                        $dob = $row['dob'];
+                        $gender = $row['gender'];
+                        $type = $row['occupation'];
                         $email = $row['email'];
                         $dob = $row['dob'];
                         $phone = $row['phone'];
@@ -122,8 +126,9 @@
                         <td>$no</td>
                         <td>$fname</td>
                         <td>$lname</td>
-                        <td>$usertype</td>
-                        <td>$usertype</td>
+                        <td>$gender</td>
+                        <td>$dob</td>
+                        <td>$type</td>
                         <td>$email</td>
                         <td>$phone</td>
                         <td>$addr</td>
