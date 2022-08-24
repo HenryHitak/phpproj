@@ -17,7 +17,6 @@
             width : 1200px;
             height: 500px;
             border-bottom : 1px solid black;
-            overflow: auto;
         }
 
         th, td {
@@ -34,6 +33,12 @@
             width : 1200px;
             display : flex;
             justify-content: right;
+        }
+
+        .table_page {
+            width: 1200px;
+            display : flex;
+            justify-content: center;
         }
 
         form {
@@ -60,6 +65,7 @@
     <button class='btn btn-outline-secondary' type='button' id='button-addon2'>Button</button>
     </form></div>
 
+    <!--User Table -->
     <div class="User_Table">
         <table class="table">
             <thead>
@@ -78,10 +84,28 @@
             </thead>
             <tbody class="table-group-divider text">
                 <?php
-                    $query = "SELECT * FROM user_tb ORDER BY user_id";
-                    $result = mysqli_query($conn,$query);
+                    // table page make
+                    $pageMax = 8;
+                    $total = $rows;
+                    $page_check = $total/$pageMax;
+                    $page_total = (int)($page_check);
+                    $page_num = isset($_GET['page_num']) == '' ? 1 : $_GET['page_num'];
+                    
+                    $pg_cal = (int)(($page_num-1) / $pageMax) * $pageMax;
+                    $pg_start =  $pg_cal+1;
+                    $pg_end = $pg_start + $pageMax;
+                    $prev = $pg_start-$pageMax;
+                    
+                    if($page_total < $page_check)
+                        $page_total += 1;
+                    
+                    if($page_num == 1)
+                        $skip_record=0;
+                    else
+                        $skip_record=($page_num-1)*$pageMax;
 
-                    $rows = mysqli_num_rows($result);
+                    $sql="SELECT * FROM user_tb ORDER BY user_id DESC LIMIT $skip_record,$pageMax";
+                    $result = mysqli_query($conn,$sql);
 
                     //get userdata in table
                     while($row = mysqli_fetch_array($result)) {
@@ -94,8 +118,7 @@
                         $addr = $row['addr'];
                     
                         echo("
-                        <div class='my_div'>
-                        <tr class='my_ul'>
+                        <tr>
                         <td>$no</td>
                         <td>$fname</td>
                         <td>$lname</td>
@@ -104,37 +127,21 @@
                         <td>$email</td>
                         <td>$phone</td>
                         <td>$addr</td>
-                        <td><a href='/board/update.php?no=$no'>Edit</a></td>
-                        <td><a href='/board/delete.php?no=$no'>Delet</a></td>
+                        <td><a href='./userUpdate.php?no=$no'class='btn btn-primary'>Edit</a></td>
+                        <td><a href='./userDelete.php?no=$no' class='btn btn-primary'>Delet</a></td>
                         </tr>
-                        </div>
                         ");
                     }
                 ?>
             </tbody>
         </table>
 
-        <!--Pagelist-->
-        <p class="my_p">
+        
+    </div>
+    <!--Pagelist-->
+    <p class="table_page">
         <?php
-            $page_max = 10;
-            $total = $rows;
-            $page_check = $total/$page_max;
-            $page_total = (int)($page_check);
-            $page_num = isset($_GET['page_num']) == '' ? 1 : $_GET['page_num'];
-            
-            $pg_cal = (int)(($page_num-1) / $page_max) * $page_max;
-            $pg_start =  $pg_cal+1;
-            $pg_end = $pg_start + $page_max;
-            $prev = $pg_start-$page_max;
-            
-            if($page_total < $page_check)
-                $page_total += 1;
-            
-            if($page_num == 1)
-                $skip_record=0;
-            else
-                $skip_record=($page_num-1)*$page_max;
+
             if($page_num != '1'){
             echo("<a href='$_SERVER[PHP_SELF]?page_num=1'>[pre]</a> ");
             };
@@ -158,13 +165,10 @@
             if($page_num != $page_total)
             echo("<a href='$_SERVER[PHP_SELF]?page_num=$page_total'>[end]</a> ");
         ?>
-        </p>
-
-    </div>
+    </p>
     <section class="button">
-        <button type="button" class="btn btn-primary">+New User</button>
+        <a href="./UserNew.php" class="btn btn-primary">+New User</a>
     </section>
-</main>
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
