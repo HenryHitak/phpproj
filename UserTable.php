@@ -50,9 +50,9 @@
 </head>
 <body>
     <!--sorting and searching -->
-    <div class='table-top'><form method='POST'>;
-    <select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>;
-    <option selected>All</option>;
+    <div class='table-top'><form method='POST'>
+    <select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>
+    <option selected>All</option>
     <?php
 
     ?>

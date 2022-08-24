@@ -9,7 +9,7 @@
     <title>Register</title>
 </head>
 <body>
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" style='width: 1200px;'>
         <div class="mb-3">
             <label for="fname" class="form-label">Fisrt Name</label>
             <input type="text" name="fname" class="form-control" require>
@@ -54,7 +54,7 @@
                 }
                 $dbCon->close();
 
-                header('Location: ');
+                header('Location: http://localhost/phpproj/userTable.php');
             }
         }
     ?>
