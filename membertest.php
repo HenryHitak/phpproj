@@ -1,3 +1,11 @@
+<?php
+    // link DataBase
+    $conn = mysqli_connect("localhost","root","","User_DB");
+    if(!$conn) {
+        die("db error : " . mysqli_error());
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,21 +48,11 @@
     <title>table</title>
 </head>
 <body>
+    <!--sorting and searching -->
+    <div class='table-top'><form method='POST'>;
+    <select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>;
+    <option selected>All</option>;
     <?php
-        function tabledisplay($details,$idx,$num){
-            return "<tr><th scope='row'>$num</th><td>$details->first_name</td><td>$details->last_name</td><td>$details->user_type</td><td>$details->username</td><td>$details->email</td><td>$details->phone</td><td>$details->address</td><td><a href='./userviewEdit.php?idx=$idx' class='btn btn-light'>Edit</a></td><td><a href='./userDelet.php' class='btn btn-light'>Del</a></td></tr>";
-        }
-
-        $fileHandler = fopen('./files/data.json','r');
-        $data = fread($fileHandler,filesize('./files/data.json'));
-        fclose($fileHandler);
-        $userData = json_decode($data);
-    
-
-        //sorting and searching'
-        echo "<div class='table-top'><form method='POST'>";
-        echo "<select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>";
-        echo "<option selected>All</option>";
         $depart = [];
         foreach($userData as $option){
             array_push($depart,$option->user_type);
@@ -63,29 +61,21 @@
         foreach($deparList as $list){
             echo "<option>$list</option>";
         }
-        echo "</select>";
-        echo "<button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>";
-        echo "</form>";
-
-        echo "<form class=input-group mb-3>";
-        echo "<input type='text' class='form-control' placeholder='Search' aria-label='Search' aria-describedby='button-addon2'>";
-        echo "<button class='btn btn-outline-secondary' type='button' id='button-addon2'>Button</button>";
-        echo "</form></div>";
-
-        /*
-        foreach($userData as $idx => $details){
-            foreach($details as $key => $value){
-                echo $key;
-            }
-        }
-        */
-        
     ?>
+    </select>
+    <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
+    </form>
+
+    <form class=input-group mb-3>
+    <input type='text' class='form-control' placeholder='Search' aria-label='Search' aria-describedby='button-addon2'>
+    <button class='btn btn-outline-secondary' type='button' id='button-addon2'>Button</button>
+    </form></div>
+
     <div class="User_Table">
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Num</th>
+                <th scope="col">Id</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">User Type</th>
@@ -99,33 +89,37 @@
             </thead>
             <tbody class="table-group-divider text">
                 <?php
-                    // if it's not "POST" show everything
-                    if($_SERVER['REQUEST_METHOD']!=="POST"){
-                        $num = 1;
-                        foreach($userData as $idx => $details){
-                            echo tabledisplay($details,$idx,$num);
-                            $num++;
-                        }
+                    $query = "SELECT * FROM user_tb ORDER BY user_id";
+                    $result = mysqli_query($conn,$query);
+
+                    $rows = mysqli_num_rows($result);
+
+                    //get userdata in table
+                    while($row = mysqli_fetch_array($result)) {
+                        $no = $row['user_id'];
+                        $fname = $row['firstName'];
+                        $lname = $row['lastName'];
+                        $email = $row['email'];
+                        $dob = $row['dob'];
+                        $phone = $row['phone'];
+                        $addr = $row['addr'];
                     
-                    //display only selected usertype but if 'All' is selected show everything again(how...)!
-                    }elseif($_SERVER['REQUEST_METHOD']=="POST"){
-                        $dep = $_POST["dep"];
-                        $numa = 1;
-                        foreach($userData as $idx => $details){
-                            if($dep == $details->user_type){
-                                echo tabledisplay($details,$idx,$numa);
-                                $numa++;
-                            }
-                        }
-                        if($dep == "All"){
-                            if($_SERVER['REQUEST_METHOD']=="POST"){
-                                $numb = 1;
-                                foreach($userData as $idx => $details){
-                                    echo tabledisplay($details,$idx,$numb);
-                                    $numb++;
-                                }
-                            }
-                        }
+                        echo("
+                        <div class='my_div'>
+                        <tr class='my_ul'>
+                        <td>$no</td>
+                        <td>$fname</td>
+                        <td>$lname</td>
+                        <td>$usertype</td>
+                        <td>$usertype</td>
+                        <td>$email</td>
+                        <td>$phone</td>
+                        <td>$addr</td>
+                        <td><a href='/board/update.php?no=$no'>Edit</a></td>
+                        <td><a href='/board/delete.php?no=$no'>Delet</a></td>
+                        </tr>
+                        </div>
+                        ");
                     }
                 ?>
             </tbody>
