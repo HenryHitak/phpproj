@@ -4,7 +4,7 @@
     if(!$conn) {
         die("db error : " . mysqli_error());
     }
-    $query = "SELECT * FROM User_DB ORDER BY user_num";
+    $query = "SELECT * FROM User_DB";
     $result = mysqli_query($conn,$query);
     $rows = mysqli_num_rows($result);
 ?>

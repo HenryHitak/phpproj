@@ -1,5 +1,8 @@
 <?php
     include './DBlink.php';
+    $sql="SELECT * FROM  User_DB ORDER BY user_num";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -8,29 +11,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>User Edit</title>
     <style>
-        *{
-            margin:0;
-            padding;0:
-        }
-        .user {
-            width:1200px;
-            height: 500px;
-            display:flex;
-            flex-direction : column;
-            justify-content: right;
-            overflow:auto;
-            row-gap: 5px;
-        }
-
-        .button {
-            width: 1190px;
-            display:flex;
-            justify-content: right;
-            column-gap : 10px;
-            padding-top :1%;
-        }
+        .user {width:1200px; height: 500px; display:flex; flex-direction : column; justify-content: right;overflow:auto; row-gap: 5px;}
+        .button {width: 1190px; display:flex; justify-content: right; column-gap : 10px; padding-top :1%;}
 
         div {
             border:1px solid black;
@@ -38,7 +23,6 @@
             width:95%;
             display:flex;
             flex-wrap:wrap;
-            justify-content: space-between;
         }
 
         p {
@@ -70,48 +54,51 @@
     </style>
 </head>
 <body>
+<?php
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+            $no = $_POST['id'];
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $dob = $_POST['dob'];
+            $gender = $_POST['gender'];
+            $type = $_POST['type'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $addr = $_POST['addr'];
+
+            echo "$no $fname";
+    
+            $conn = mysqli_connect("localhost","root","","Hey_Doc");
+            $UsereditCMD = "UPDATE User_DB SET user_num='$no',occupation='$type',firstName='$fname',lastName='$lname',gender='$gender',dob='$dob',email='$email',pass='$password',`phone`='$phone',addr='$addr',salt='salt' WHERE user_num = $no";
+            if(mysqli_query($conn,$UsereditCMD)){
+                header("Location: http://localhost/phpproj/userTable.php");
+            }else{
+                echo "failed";
+            }
+    
+        }
+    ?>
     <?php
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $gender = $_POST['gender'];
-        $type = $_POST['type'];
-        $id = $_POST['id'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $addr = $_POST['addr'];
-        $idx = $_GET['idx'];
 
-        /*
-        $filehandler = fopen('./files/data.json','r');
-        $user = json_decode(fread($filehandler,filesize('./files/data.json')));
-        fclose($filehandler);
-        */
+    if(isset($_GET['no'])){
+        $idx = $_GET['no'];
+        while($row = mysqli_fetch_array($result)) {
+            if($row['user_num']==$idx) {
+                $fname = $row['firstName'];
+                $lname = $row['lastName'];
+                $dob = $row['dob'];
+                $gender = $row['gender'];
+                $type = $row['occupation'];
+                $email = $row['email'];
+                $pass = $row['pass'];
+                $dob = $row['dob'];
+                $phone = $row['phone'];
+                $addr = $row['addr'];
+            }
+        }
 
-        $user[$idx]->id = $id;
-        $user[$idx]->first_name = $fname;
-        $user[$idx]->last_name = $lname;
-        $user[$idx]->gender = $gender;
-        $user[$idx]->user_type = $type;
-        $user[$idx]->username = $id;
-        $user[$idx]->password = $password;
-        $user[$idx]->email = $email;
-        $user[$idx]->phone = $phone;
-        $user[$idx]->address = $addr;
-
-        /*
-        $filehandler = fopen('./files/data.json','w');
-        $stringData = json_encode($user);
-
-        fwrite($filehandler,$stringData);
-        fclose($filehandler);
-        echo "<h3>Your changes have been saved successfully.</h3>";
-        */
-    }
-
-    if(isset($_GET['idx'])){
-        $idx = $_GET['idx'];
         $filehandler = fopen('./files/data.json','r');
         $userData = json_decode(fread($filehandler,filesize('./files/data.json')));
         fclose($filehandler);
@@ -119,39 +106,40 @@
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
-        echo "<input name='id' value='".$userData[$idx]->EmployeeID."'/>";
+        echo "<input name='id' value='".$idx."'/>";
         echo "</div>";
         echo "<div><p>Personal Info</p>";
         echo "<label for='fname'>First Name</label>";
-        echo "<input name='fname' value='".$userData[$idx]->first_name."'/>";
+        echo "<input name='fname' value='".$fname."'/>";
         echo "<label for='lname'>Last Name</label>";
-        echo "<input name='lname' value='".$userData[$idx]->last_name."'/>";
+        echo "<input name='lname' value='".$lname."'/>";
         echo "<label for='gender'>Gender</label>";
-        echo "<input name='gender' value='".$userData[$idx]->gender."'/>";
+        echo "<input name='gender' value='".$gender."'/>";
+        echo "<label for='dob'>Date of Birth</label>";
+        echo "<input name='dob' value='".$dob."'/>";
         echo "</div>";
         echo "<div><p>Register Info</p>";
         echo "<label for='type'>Usertype</label>";
-        echo "<input name='type' value='".$userData[$idx]->user_type."'/>";
-        echo "<label for='id'>ID</label>";
-        echo "<input name='id' value='".$userData[$idx]->username."'/>";
+        echo "<input name='type' value='".$type."'/>";
+        echo "<label for='id'>Email</label>";
+        echo "<input name='email' type='email' value='".$email."'/>";
         echo "<label for='password'>Password</label>";
-        echo "<input name='password' value='".$userData[$idx]->password."'/>";
+        echo "<input name='password' value='".$pass."'/>";
         echo "</div>";
         echo "<div class='contact'><p>Contact</p>";
-        echo "<label for='email'>Email</label>";
-        echo "<input name='email' value='".$userData[$idx]->email."'/>";
         echo "<label for='phone'>Phone</label>";
-        echo "<input name='phone' value='".$userData[$idx]->phone."'/>";
+        echo "<input name='phone' value='".$phone."'/>";
         echo "<label for='addr'>Address</label>";
-        echo "<input name='addr' value='".$userData[$idx]->address."'/>";
+        echo "<input name='addr' value='".$addr."'/>";
         echo "</div></section>";
     }
     ?>
-    <section class="button">
-        <a href='./userDelet.php'>Del</a>
-        <button type="submit">Save</button>
-        <button type="button" onclick="location.href='./membertest.php';">Back</button>
-    </section>
+            <a href='./userDelet.php'>Del</a>
+            <button type="submit">Save</button>
+            <button type="button" onclick="location.href='./UserTable.php';">Back</button>
+        </section>
     </form>
+
+
 </body>
 </html>

@@ -23,6 +23,7 @@
             </ul>
         </nav>
     </header>
+    
     <?php
     ?>
 <!-- JavaScript Bundle with Popper -->

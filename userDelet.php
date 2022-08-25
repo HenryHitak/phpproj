@@ -11,5 +11,5 @@
     $data = json_encode($data_array, JSON_PRETTY_PRINT);
     file_put_contents('./files/data.json', $data);
 
-    header("Location: http://localhost/phpproj/membertest.php");
+    header("Location: http://localhost/phpproj/UserTable.php");
 ?>

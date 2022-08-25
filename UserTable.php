@@ -11,59 +11,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-        .User_Table{
-            width : 1300px;
-            height: 500px;
-            border-bottom : 1px solid black;
-        }
-
-        th, td {
-            text-align: center;
-        }
-
-        .table-top {
-            width : 1300px;
-            display : flex;
-            justify-content: space-between;
-        }
-
-        .button {
-            width : 1300px;
-            display : flex;
-            justify-content: right;
-        }
-
-        .table_page {
-            width: 1300px;
-            display : flex;
-            justify-content: center;
-        }
-
-        form {
-            width:200px !important;
-            display : flex;
-        }
-    </style>
-    <title>table</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>User List</title>
 </head>
 <body>
     <!--sorting and searching -->
-    <div class='table-top'><form method='POST'>
-    <select name='dep' class='form-select form-select-sm' aria-label='.form-select-sm example'>
-    <option selected>All</option>
-    <?php
-
-    ?>
-    </select>
-    <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
-    </form>
-
-    <form class=input-group mb-3>
-    <input type='text' class='form-control' placeholder='Search' aria-label='Search' aria-describedby='button-addon2'>
-    <button class='btn btn-outline-secondary' type='button' id='button-addon2'>Button</button>
-    </form></div>
+    <div class='table-top'>
+        <form method='POST' action="<?php echo $_SERVER['PHP_SELF']?>">
+            <select name='userType' class='form-select form-select-sm' aria-label='.form-select-sm example'>
+                <option selected>All</option>
+                <option value="admin">Admin</option>
+                <option value="doctor">Doctor</option>
+                <option value="general">General</option>
+            </select>
+            <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
+        </form>
+    </div>
 
     <!--User Table -->
     <div class="User_Table">
@@ -97,20 +60,24 @@
                     $pg_end = $pg_start + $pageMax;
                     $prev = $pg_start-$pageMax;
                     
-                    if($page_total < $page_check)
+                    if($page_total < $page_check){
                         $page_total += 1;
+                    }
                     
-                    if($page_num == 1)
+                    if($page_num == 1){
                         $skip_record=0;
-                    else
-                        $skip_record=($page_num-1)*$pageMax;
 
-                    $sql="SELECT * FROM User_DB ORDER BY user_num DESC LIMIT $skip_record,$pageMax";
+                    }else{
+                        $skip_record=($page_num-1)*$pageMax;
+                    }
+
+                    
+                    //get userdata in table
+                    $sql="SELECT * FROM  User_DB ORDER BY user_num DESC LIMIT $skip_record,$pageMax";
                     $result = mysqli_query($conn,$sql);
 
-                    //get userdata in table
                     while($row = mysqli_fetch_array($result)) {
-                        $no = $row['user_id'];
+                        $no = $row['user_num'];
                         $fname = $row['firstName'];
                         $lname = $row['lastName'];
                         $dob = $row['dob'];
@@ -136,6 +103,7 @@
                         <td><a href='./userDelete.php?no=$no' class='btn btn-primary'>Delet</a></td>
                         </tr>
                         ");
+                        
                     }
                 ?>
             </tbody>
