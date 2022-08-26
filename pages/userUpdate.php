@@ -3,6 +3,7 @@
     $query = "SELECT * FROM User_DB";
     $result = mysqli_query($conn,$query);
     $rows = mysqli_num_rows($result);
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
             $conn = mysqli_connect("localhost","root","","Hey_Doc");
             $UsereditCMD = "UPDATE User_DB SET user_num='$no',occupation='$type',firstName='$fname',lastName='$lname',gender='$gender',dob='$dob',email='$email',pass='$password',`phone`='$phone',addr='$addr',salt='salt' WHERE user_num = $no";
             if(mysqli_query($conn,$UsereditCMD)){
-                header("Location: http://localhost/phpproj/userTable.php");
+                header("Location: http://localhost/UserTable");
             }else{
                 echo "failed";
             }
@@ -51,8 +52,8 @@
     ?>
     <?php
 
-    if(isset($_GET['no'])){
-        $idx = $_GET['no'];
+    if(isset($_SESSION['id'])){
+        $idx = $_SESSION['id'];
         while($row = mysqli_fetch_array($result)) {
             if($row['user_num']==$idx) {
                 $fname = $row['firstName'];
@@ -68,10 +69,8 @@
             }
         }
 
-        $filehandler = fopen('./files/data.json','r');
-        $userData = json_decode(fread($filehandler,filesize('./files/data.json')));
-        fclose($filehandler);
-        echo "<form method='POST' action='".$_SERVER['PHP_SELF']."?idx=$idx'>";
+
+        echo "<form method='POST'>";
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
@@ -103,9 +102,8 @@
         echo "</div></section>";
     }
     ?>
-            <a href='./userDelet.php'>Del</a>
             <button type="submit">Save</button>
-            <button type="button" onclick="location.href='./UserTable.php';">Back</button>
+            <button type="button" onclick="location.href='UserTable';">Back</button>
         </section>
     </form>
 
