@@ -1,8 +1,8 @@
 <?php
     include './DBlink.php';
-    $sql="SELECT * FROM  User_DB ORDER BY user_num";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result);
+    $query = "SELECT * FROM User_DB";
+    $result = mysqli_query($conn,$query);
+    $rows = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -16,41 +16,12 @@
     <style>
         .user {width:1200px; height: 500px; display:flex; flex-direction : column; justify-content: right;overflow:auto; row-gap: 5px;}
         .button {width: 1190px; display:flex; justify-content: right; column-gap : 10px; padding-top :1%;}
-
-        div {
-            border:1px solid black;
-            padding: 2%;
-            width:95%;
-            display:flex;
-            flex-wrap:wrap;
-        }
-
-        p {
-            width:100%;
-            padding-bottom:2%;
-            font-weight:600;
-        }
-
-        input {
-            width:25%;
-            text-align:center;
-            padding:0.5%;
-        }
-
-        .contact {
-            display:flex;
-            flex-direction:column;
-        }
-
-        .contact > input {
-            width:98%;
-        }
-
-        h3{
-            color:green;
-        }
-
-
+        div {border:1px solid black; padding: 2%; width:95%; display:flex; flex-wrap:wrap;}
+        p {width:100%; padding-bottom:2%; font-weight:600;}
+        input {width:25%; text-align:center; padding:0.5%;}
+        .contact {display:flex; flex-direction:column;}
+        .contact > input {width:98%;}
+        h3{color:green;}
     </style>
 </head>
 <body>
@@ -67,8 +38,6 @@
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $addr = $_POST['addr'];
-
-            echo "$no $fname";
     
             $conn = mysqli_connect("localhost","root","","Hey_Doc");
             $UsereditCMD = "UPDATE User_DB SET user_num='$no',occupation='$type',firstName='$fname',lastName='$lname',gender='$gender',dob='$dob',email='$email',pass='$password',`phone`='$phone',addr='$addr',salt='salt' WHERE user_num = $no";

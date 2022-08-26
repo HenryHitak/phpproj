@@ -1,5 +1,35 @@
 <?php
     include './DBlink.php';
+
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        $userType = $_POST['userType'];
+        switch($_POST['userType']){
+            case "all":
+                $query = "SELECT * FROM User_DB";
+                $result = mysqli_query($conn,$query);
+                $rows = mysqli_num_rows($result);
+            break;
+            case "doctor":
+                $query = "SELECT * FROM User_DB WHERE occupation = 'doctor'";
+                $result = mysqli_query($conn,$query);
+                $rows = mysqli_num_rows($result);
+            break;
+            case "general":
+                $query = "SELECT * FROM User_DB WHERE occupation = 'general'";
+                $result = mysqli_query($conn,$query);
+                $rows = mysqli_num_rows($result);
+            break;
+            case "admin":
+                $query = "SELECT * FROM User_DB WHERE occupation = 'admin'";
+                $result = mysqli_query($conn,$query);
+                $rows = mysqli_num_rows($result);
+            break;
+        }
+    }else{
+        $query = "SELECT * FROM User_DB";
+        $result = mysqli_query($conn,$query);
+        $rows = mysqli_num_rows($result);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +49,9 @@
     <div class='table-top'>
         <form method='POST' action="<?php echo $_SERVER['PHP_SELF']?>">
             <select name='userType' class='form-select form-select-sm' aria-label='.form-select-sm example'>
-                <option selected>All</option>
+                <option value="all">All</option>
                 <option value="admin">Admin</option>
-                <option value="doctor">Doctor</option>
+                <option value="doctor">doctor</option>
                 <option value="general">General</option>
             </select>
             <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
@@ -73,8 +103,31 @@
 
                     
                     //get userdata in table
-                    $sql="SELECT * FROM  User_DB ORDER BY user_num DESC LIMIT $skip_record,$pageMax";
-                    $result = mysqli_query($conn,$sql);
+                    if($_SERVER['REQUEST_METHOD']=="POST"){
+                        $userType = $_POST['userType'];
+                        switch($_POST['userType']){
+                            case "all":
+                                $sql = "SELECT * FROM User_DB LIMIT $skip_record,$pageMax" ;
+                                $result = mysqli_query($conn,$sql);
+                                
+                            break;
+                            case "doctor":
+                                $sql = "SELECT * FROM User_DB WHERE occupation = 'doctor' LIMIT $skip_record,$pageMax";
+                                $result = mysqli_query($conn,$sql);
+                            break;
+                            case "general":
+                                $sql = "SELECT * FROM User_DB WHERE occupation = 'general' LIMIT $skip_record,$pageMax";
+                                $result = mysqli_query($conn,$sql);
+                            break;
+                            case "admin":
+                                $sql = "SELECT * FROM User_DB WHERE occupation = 'admin' LIMIT $skip_record,$pageMax";
+                                $result = mysqli_query($conn,$sql);
+                            break;
+                        }
+                    }else{
+                        $sql = "SELECT * FROM User_DB LIMIT $skip_record,$pageMax";
+                        $result = mysqli_query($conn,$sql);
+                    }
 
                     while($row = mysqli_fetch_array($result)) {
                         $no = $row['user_num'];
