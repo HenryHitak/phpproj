@@ -11,9 +11,9 @@ header{background-color: bisque;}
 footer{background-color: bisque;}
 
 .sidebar{width: 15%; background-color: aquamarine;}
-.content{width: 85%;}
-
-.User_Table th, .User_Table td {text-align: center;}
+.content{width: 85%; height: 800px;}
+.UserTable, .table {overflow: hidden !important;}
+.UserTable th, .UserTable td {text-align: center;}
 .button {width : 100%; display : flex; justify-content: right;}
 .table_page {width: 100%; display : flex; justify-content: center;}
 .table-top > form,.input-group {width:200px !important; display : flex;}
