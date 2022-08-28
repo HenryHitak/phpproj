@@ -14,22 +14,20 @@
             <thead>
                 <tr>
                 <th scope="col">Appointment Num</th>
-                <th scope="col">Doc ID</th>
                 <th scope="col">Doctor</th>
                 <th scope="col">Speciality</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Patient Name</th>
-                <th scope="col">Patient Phone</th>
                 <th scope="col">Patient Email</th>
                 <th scope="col">Appointment Date</th>
                 <th scope="col">Appointment time</th>
+                <th scope="col">Prescription</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text">
                 <?php
                     while($row = mysqli_fetch_array($result)) {
                         $ano = $row['appointmentId'];
-                        $dnum = $row['DoctorNumber'];
                         $dname = $row['DoctorName'];
                         $special = $row['DoctorSpeciality'];
                         $doctor = $row['DoctorName'];
@@ -42,7 +40,6 @@
                         echo("
                         <tr>
                         <td>$ano</td>
-                        <td>$dnum</td>
                         <td>$dname</td>
                         <td>$special</td>
                         <td>$doctor</td>
@@ -51,7 +48,7 @@
                         <td>$pemail</td>
                         <td>$adate</td>
                         <td>$atime</td>
-                        <td><a href='./userUpdate.php?no=$invoice'class='btn btn-primary'>charge</a></td>
+                        <td><a href='./invoice.php?no=$ano'class='btn btn-primary'>Prescription</a></td>
                         ");
                     }
                 ?>
@@ -68,8 +65,12 @@
                 <th scope="col">Patient Name</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Appointment Date</th>
+                <th scope="col">Visit Time</th>
+                <th scope="col">Leave Time</th>
+                <th scope="col">Total Cost</th>
                 <th scope="col">Edit invoice</th>
                 <th scope="col">Send Email</th>
+                <th scope="col">Payment(yet/finish)</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text">

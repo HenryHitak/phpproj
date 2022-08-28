@@ -9,31 +9,6 @@
 ?>
 
 <?php
-        if($_SERVER['REQUEST_METHOD']=="POST"){
-            $no = $_POST['id'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $dob = $_POST['dob'];
-            $gender = $_POST['gender'];
-            $type = $_POST['type'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $addr = $_POST['addr'];
-    
-            $conn = mysqli_connect("localhost","root","","Hey_Doc");
-            $UsereditCMD = "UPDATE User_DB SET user_num='$no',occupation='$type',firstName='$fname',lastName='$lname',gender='$gender',dob='$dob',email='$email',pass='$password',`phone`='$phone',addr='$addr',salt='salt' WHERE user_num = $no";
-            if(mysqli_query($conn,$UsereditCMD)){
-                header("Location: http://localhost/phpproj/userTable.php");
-            }else{
-                echo "failed";
-            }
-    
-        }
-    ?>
-    <?php
-
     if(isset($_GET['no'])){
         $idx = $_GET['no'];
         while($row = mysqli_fetch_array($result)) {
@@ -52,7 +27,7 @@
         }
 
 
-        echo "<form method='POST' action='".$_SERVER['PHP_SELF']."?idx=$idx'>";
+        echo "<form method='POST' action='useredit.php' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
@@ -83,11 +58,11 @@
         echo "<input name='addr' class='form-control' value='".$addr."'/>";
         echo "</div></section>";
     }
-    ?>
-            <a href='./userDelet.php'>Del</a>
-            <button type="submit">Save</button>
-            <button type="button" onclick="location.href='./UserTable.php';">Back</button>
-        </section>
-    </form>
+?>
+        <a href='./userDelet.php'>Del</a>
+        <button type="submit">Save</button>
+        <button type="button" onclick="location.href='./UserTable.php';">Back</button>
+    </section>
+</form>
 
-    <?php include 'footer.php';?>
+<?php include 'footer.php';?>
