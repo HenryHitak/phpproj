@@ -31,7 +31,7 @@
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
-        echo "<input name='id' class='form-control' value='".$idx."' disabled/>";
+        echo "<input name='id' class='form-control' value='".$idx."'/>";
         echo "</div>";
         echo "<div><p>Personal Info</p>";
         echo "<label for='fname'>First Name</label>";

@@ -21,7 +21,7 @@
                 <th scope="col">Patient Email</th>
                 <th scope="col">Appointment Date</th>
                 <th scope="col">Appointment time</th>
-                <th scope="col">Prescription</th>
+                <th scope="col">Invoice Write</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text">
@@ -48,7 +48,7 @@
                         <td>$pemail</td>
                         <td>$adate</td>
                         <td>$atime</td>
-                        <td><a href='./invoice.php?no=$ano'class='btn btn-primary'>Prescription</a></td>
+                        <td><a href='./invoice.php?no=$ano'class='btn btn-primary'>Invoice</a></td>
                         ");
                     }
                 ?>
