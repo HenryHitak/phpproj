@@ -11,7 +11,7 @@
 
 <div class="container" >
   <h1 style="margin-left: 55vh; margin-bottom: 50px">Registration Page</h1>
-  <p style="color:red; margin-left: 50vh;">Please fill up every boxes</p>  
+  <p style="color:red; margin-left: 50vh;">All field have to fillup And Password have to be match</p>  
   <div class="form-group">
     <form class="form-horizontal" action="registration.php" method="POST">
         <label style="margin-top: 15px;"> Email</label> <br>
@@ -31,3 +31,6 @@
 </div>
 </body>
 </html>
+<?php
+include 'footer.php';
+?>
