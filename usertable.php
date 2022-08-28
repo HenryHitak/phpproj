@@ -64,7 +64,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                 <th scope="col">Phone</th>
                 <th scope="col">Address</th>
                 <th scope="col">Edit</th>
-                <th scope="col">Delet</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text">
@@ -144,8 +143,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                         <td>$phone</td>
                         <td>$addr</td>
                         <td><a href='./userUpdate.php?no=$no'class='btn btn-primary'>Edit</a></td>
-                        <td><a href='./userDelete.php?no=$no' class='btn btn-primary'>Delet</a></td>
-                        </tr>
                         ");
                         
                     }

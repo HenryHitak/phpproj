@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- 생성 시간: 22-08-28 21:22
+-- 생성 시간: 22-08-29 01:25
 -- 서버 버전: 10.4.21-MariaDB
 -- PHP 버전: 8.1.6
 
@@ -99,20 +99,26 @@ INSERT INTO `doctorrecords` (`DoctorID`, `DoctorName`, `DoctorNumber`, `DoctorGe
 
 CREATE TABLE `Invoice` (
   `appointmentId` int(11) NOT NULL,
-  `PatientName` int(11) NOT NULL,
+  `PatientName` varchar(100) NOT NULL,
   `DoctortName` varchar(100) NOT NULL,
   `PatientEmail` varchar(200) NOT NULL,
   `AppoDate` date NOT NULL,
-  `Vtime` date NOT NULL,
-  `Ltime` date NOT NULL,
+  `Vtime` int(11) NOT NULL,
+  `Ltime` int(11) NOT NULL,
   `preFile` varchar(200) NOT NULL,
   `MSF` int(11) NOT NULL,
   `MF` int(11) NOT NULL,
   `PF` int(11) NOT NULL,
   `Total` varchar(100) NOT NULL,
-  `doi` date NOT NULL,
   `pcd` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 테이블의 덤프 데이터 `Invoice`
+--
+
+INSERT INTO `Invoice` (`appointmentId`, `PatientName`, `DoctortName`, `PatientEmail`, `AppoDate`, `Vtime`, `Ltime`, `preFile`, `MSF`, `MF`, `PF`, `Total`, `pcd`) VALUES
+(2, 'testtest', 'Hitak', 'nakhe@hanmail.net', '2022-08-27', 8, 13, 'test', 22, 44, 22, '88', 'yet');
 
 -- --------------------------------------------------------
 
@@ -161,7 +167,7 @@ CREATE TABLE `User_DB` (
 --
 
 INSERT INTO `User_DB` (`user_num`, `occupation`, `firstName`, `lastName`, `gender`, `dob`, `email`, `pass`, `phone`, `addr`, `salt`) VALUES
-(2, 'admin', 'Nak', 'Kim', 'Male', '1990-07-29', 'nakhe@hanmail.net', '1234', '60497833', '999 spiderman st', 'salt'),
+(2, 'admin', 'whywhty', 'Kim', 'Male', '1990-07-29', 'nakhe@hanmail.net', '1234', '60497833', '999 spiderman st', 'salt'),
 (7, 'doctor', 'Langsdon', 'Phoenix', 'Male', '1987-08-06', 'lphoenix3@joomla.org', '1234', '957-200-8692', '1 Utah Way', 'salt'),
 (8, 'general', 'Ara', 'Gutherson', 'Female', '1876-06-20', 'agutherson4@qq.com', '1234', '708-682-3195', '62003 Schurz Parkway', 'salt'),
 (9, 'doctor', 'Terrill', 'Cowndley', 'Male', '1879-06-23', 'tcowndley5@deviantart.com', '1234', '973-807-2629', '432 Vidon Street', 'salt'),
@@ -192,7 +198,8 @@ INSERT INTO `User_DB` (`user_num`, `occupation`, `firstName`, `lastName`, `gende
 (34, 'admin', 'Nakhyeon', 'Kim', 'Male', '2022-08-29', 'nakhe@hanmail.net', 'dsdfa', '2222', 'dhththththth', 'salt'),
 (35, 'admin', 'testtest', 'Kim', 'Male', '2022-08-30', 'nakhe@hanmail.net', 'dsdfa', '60497833', 'dhththththth', 'salt'),
 (36, 'doctor', 'testtest', 'test', 'Male', '2022-08-18', 'nakhe@hanmail.net', 'dsdfa', '60497833', '871 Roth Avenue', 'salt'),
-(37, 'admin', 'nak', 'Kim', 'Male', '2022-08-31', 'nakhe@hanmail.net', 'dsdfa', '636-264-1723', '경기도 성남시 수정구 복정로32번길 22 (복정동)', 'salt');
+(37, 'admin', 'nak', 'Kim', 'Male', '2022-08-31', 'nakhe@hanmail.net', 'dsdfa', '636-264-1723', '경기도 성남시 수정구 복정로32번길 22 (복정동)', 'salt'),
+(38, 'admin', 'testtest', 'testtest', 'Male', '2022-08-11', 'nakhe@hanmail.et', '1234', '1234', '1234', 'salt');
 
 --
 -- 덤프된 테이블의 인덱스
@@ -255,7 +262,7 @@ ALTER TABLE `usertable`
 -- 테이블의 AUTO_INCREMENT `User_DB`
 --
 ALTER TABLE `User_DB`
-  MODIFY `user_num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- 덤프된 테이블의 제약사항
@@ -266,12 +273,6 @@ ALTER TABLE `User_DB`
 --
 ALTER TABLE `appointment`
   ADD CONSTRAINT `user_cons` FOREIGN KEY (`userid`) REFERENCES `usertable` (`userid`);
-
---
--- 테이블의 제약사항 `Invoice`
---
-ALTER TABLE `Invoice`
-  ADD CONSTRAINT `appoint` FOREIGN KEY (`appointmentId`) REFERENCES `appointment` (`appointmentId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -31,7 +31,7 @@
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
-        echo "<input name='id' class='form-control' value='".$idx."' disabled/>";
+        echo "<input name='id' class='form-control' value='".$idx."'/>";
         echo "</div>";
         echo "<div><p>Personal Info</p>";
         echo "<label for='fname'>First Name</label>";
@@ -60,8 +60,8 @@
     }
 ?>
         <a href='./userDelet.php'>Del</a>
-        <button type="submit">Save</button>
-        <button type="button" onclick="location.href='./UserTable.php';">Back</button>
+        <button type="submit" class='btn btn-primary'>Save</button>
+        <button type="button" class='btn btn-primary' gitonclick="location.href='./UserTable.php';">Back</button>
     </section>
 </form>
 
