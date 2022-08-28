@@ -60,8 +60,6 @@
         echo "<input name='pemail' class='form-control' value='".$Pemail."'/>";
         echo "</div></section>";
     }
-
-
 ?>
         <button type="submit">Save</button>
         <button type="button" onclick="location.href='./Payment.php';">Back</button>
