@@ -60,8 +60,8 @@
     }
 ?>
         <a href='./userDelet.php'>Del</a>
-        <button type="submit">Save</button>
-        <button type="button" onclick="location.href='./UserTable.php';">Back</button>
+        <button type="submit" class='btn btn-primary'>Save</button>
+        <button type="button" class='btn btn-primary' gitonclick="location.href='./UserTable.php';">Back</button>
     </section>
 </form>
 

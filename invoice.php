@@ -61,8 +61,8 @@
         echo "</div></section>";
     }
 ?>
-        <button type="submit">Save</button>
-        <button type="button" onclick="location.href='./Payment.php';">Back</button>
+        <button type="submit" class='btn btn-primary'>Save</button>
+        <button type="button" class='btn btn-primary' onclick="location.href='./Payment.php';">Back</button>
     </section>
 </form>
 

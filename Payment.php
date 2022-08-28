@@ -99,9 +99,9 @@
                         <td>$vtime</td>
                         <td>$Ltime</td>
                         <td>$Total</td>
-                        <td><a href='./userUpdate.php?no=$invoice'class='btn btn-primary'>Edit</a></td>
-                        <td><a href='./userUpdate.php?no=$invoice'class='btn btn-primary'>Send</a></td>
-                        <td><a href='./userUpdate.php?no=$invoice'class='btn btn-primary'>Pay</a></td>
+                        <td><a href='#'class='btn btn-primary'>Edit</a></td>
+                        <td><a href='#'class='btn btn-primary'>Send</a></td>
+                        <td><a href='#'class='btn btn-primary'>Pay</a></td>
                         </tr>")
                         ;
                         
