@@ -21,3 +21,21 @@ header{
     color: #454444;
     text-transform: capitalize;
 }
+
+.input-group {
+    width: 100%;
+    text-align: right;
+}
+
+.Users{
+    padding-left: 1%;
+    padding-right: 3%;
+}
+.table_page{
+    text-align: center;
+}
+.button{
+    text-align: right;
+}
+.User_Table{width : 1400px; height: 550px; border-bottom : 1px solid black;}
+.User_Table th, .User_Table td {text-align: center;}
