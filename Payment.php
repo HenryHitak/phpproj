@@ -106,7 +106,7 @@
                         <td>$pcd</td>
                         <td><a href='./invoiceedit.php?no=$ano' class='btn btn-primary'>Edit</a></td>
                         <td><a href='#' class='btn btn-warning'>Send</a></td>
-                        <td><a href='#' class='btn btn-dark'>Pay</a></td>
+                        <td><a href='./edit/paycheck.php?no=$ano' class='btn btn-dark'>Pay</a></td>
                         </tr>")
                         ;
                         

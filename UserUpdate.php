@@ -28,7 +28,7 @@
             }
         }
 
-        echo "<form method='POST' action='useredit.php' style='width: 1000px; padding-left:13%;'>";
+        echo "<form method='POST' action='./edit/useredit.php' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
@@ -61,7 +61,7 @@
     }
 ?>
         <div style="text-align:right;">
-            <a href='./useredelet.php' class="btn btn-danger">Del</a>
+            <a href='./edit/useredelet.php' class="btn btn-danger">Del</a>
             <button type="submit" class='btn btn-primary'>Save</button>
             <button type="button" class='btn btn-primary' onclick="location.href='./UserTable.php';">Back</button>
         </div>

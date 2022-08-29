@@ -1,13 +1,13 @@
 <?php
     session_start();
-    $no = $_SESSION['dele'];
+    $no = $_SESSION['del'];
 
     $conns = mysqli_connect("localhost","root","","phpproj");
-    $UserdeletCMD = "DELETE FROM Invoice WHERE appointmentId = '$no'";
+    $UserdeletCMD = "DELETE FROM User_DB WHERE user_num = '$no'";
 
     if(mysqli_query($conns,$UserdeletCMD)){
-        unset($_SESSION['dele']);
-        header("Location:Payment.php");
+        unset($_SESSION['del']);
+        header("Location:../UserTable.php");
     }else{
         echo "failed";
     }

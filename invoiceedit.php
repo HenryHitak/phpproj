@@ -28,7 +28,7 @@
             }
 
         }
-        echo "<form method='POST' action='invoiceeditInput.php' style='width: 1000px; padding-left:13%;'>";
+        echo "<form method='POST' action='./edit/invoiceeditInput.php' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>Payment Edit</h2><section class='user'>";
         echo "<div><h4>Appointment Info</h4>";
         echo "<div>";
@@ -66,7 +66,7 @@
         echo "</div></section>";
     }
 ?>
-        <a href='./invoicedelet.php' class="btn btn-danger">Del</a>
+        <a href='./edit/invoicedelet.php' class="btn btn-danger">Del</a>
         <button type="submit" class='btn btn-primary'>Save</button>
         <button type="button" class='btn btn-primary' onclick="location.href='./Payment.php';">Back</button>
     </section>

@@ -23,7 +23,7 @@
             }
 
         }
-        echo "<form method='POST' action='invoiceInput.php' style='width: 1000px; padding-left:13%;'>";
+        echo "<form method='POST' action='./edit/invoiceInput.php' enctype='multipart/form-data' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>Payment</h2><section class='user'>";
         echo "<div><h4>Appointment Info</h4>";
         echo "<div>";
