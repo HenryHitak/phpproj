@@ -4,6 +4,7 @@
     $result = mysqli_query($conn,$query);
     $rows = mysqli_num_rows($result);
 
+    session_start();
     $_SESSION['userName'];
     include 'head.php';
 ?>
@@ -23,11 +24,11 @@
                 $dob = $row['dob'];
                 $phone = $row['phone'];
                 $addr = $row['addr'];
+                $_SESSION['del'] = $idx;
             }
         }
 
-
-        echo "<form method='POST' action='useredit.php' style='width: 1000px; padding-left:13%;'>";
+        echo "<form method='POST' action='./edit/useredit.php' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
@@ -59,10 +60,11 @@
         echo "</div></section>";
     }
 ?>
-        <a href='./userDelet.php'>Del</a>
-        <button type="submit" class='btn btn-primary'>Save</button>
-        <button type="button" class='btn btn-primary' gitonclick="location.href='./UserTable.php';">Back</button>
-    </section>
+        <div style="text-align:right;">
+            <a href='./edit/useredelet.php' class="btn btn-danger">Del</a>
+            <button type="submit" class='btn btn-primary'>Save</button>
+            <button type="button" class='btn btn-primary' onclick="location.href='./UserTable.php';">Back</button>
+        </div>
 </form>
 
 <?php include 'footer.php';?>
