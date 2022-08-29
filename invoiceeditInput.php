@@ -14,9 +14,7 @@
 
     $conns = mysqli_connect("localhost","root","","phpproj");
 
-    
-
-    $insertCmd = "INSERT INTO Invoice (appointmentId,PatientName,DoctortName,PatientEmail,AppoDate,Vtime,Ltime,preFile,MSF,MF,PF,Total,pcd) VALUES ('$no','$pname','$dname','$pemamil','$doa','$atime','$ftime','$pfile','$MSF','$MF','$PF','$total','yet')";
+    $insertCmd = "UPDATE Invoice SET appointmentId ='$no', PatientName='$pname', DoctortName='$dname',PatientEmail='$pemamil',AppoDate='$doa',Vtime='$atime',Ltime='$ftime',preFile='$pfile',MSF='$MSF',MF='$MF',PF='$PF',Total='$total',pcd='yet'  where appointmentId=$no";
 
     if(mysqli_query($conns,$insertCmd)){
         header("Location:Payment.php");
