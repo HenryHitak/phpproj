@@ -9,6 +9,7 @@ $rowNum = mysqli_num_rows($result);
 
 if($rowNum == 1){
     $_SESSION['userName'] = $name;
+    $_SESSION['sessionTimeout'] = time()+600;
     header('location:home.php');
     
 }

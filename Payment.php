@@ -1,8 +1,8 @@
 <?php
-  include 'conn.php';
-  session_start();
-  $_SESSION['userName'];
-  include 'head.php';
+    include 'conn.php';
+    session_start();
+    $_SESSION['userName'];
+    include 'head.php';
 
   $sql = "SELECT * FROM appointment";
   $result = mysqli_query($conn,$sql);
@@ -11,7 +11,7 @@
   $inresult = mysqli_query($conn,$insql);
   $insqls = "SELECT * FROM Invoice";
   $inresults = mysqli_query($conn,$insql);
-  ?>
+?>
 <div class="Users">
     <div class="pay">
         <h2>Appointment List</h2>
@@ -36,9 +36,10 @@
                     $dname = $row['DoctorName'];
                     $special = $row['DoctorSpeciality'];
                     $doctor = $row['DoctorName'];
-                    $patient = $row['Patient'];
-                    $pphone = $row['Pphone'];
-                    $pemail = $row['Pemail'];
+                    //$patient = $row['Patient'];
+                    //$pemail = $row['Pemail'];
+                    $patient = "test";
+                    $pemail = "test";
                     $adate = $row['appointDate'];
                     $atime = $row['appointTime'];
                 
@@ -48,8 +49,8 @@
                     <td>$dname</td>
                     <td>$special</td>
                     <td>$doctor</td>
-                    <td>$patient</td>
-                    <td>$pemail</td>
+                    <td>t$patient</td>
+                    <td>t$pemail</td>
                     <td>$adate</td>
                     <td>$atime</td>
                     <td><a href='./invoice.php?no=$ano'class='btn btn-primary'>Invoice</a></td>

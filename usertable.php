@@ -1,8 +1,8 @@
 <?php
-  include 'conn.php';
-  session_start();
-  $_SESSION['userName'];
-  include 'head.php';
+    include 'conn.php';
+    session_start();
+    $_SESSION['userName'];
+    include 'head.php';
 
 
 if($_SERVER['REQUEST_METHOD']=="POST"){

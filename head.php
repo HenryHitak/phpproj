@@ -1,3 +1,11 @@
+<?php
+    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName'])){
+        session_unset();
+        session_destroy();
+        header("Location: http://localhost/phpproj/login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
