@@ -4,7 +4,7 @@
     $result = mysqli_query($conn,$query);
     session_start();
     $_SESSION['userName'];
-    include '../head.php';
+    include './head.php';
 ?>
 
 <?php
@@ -42,10 +42,10 @@
                 $mail->Username   = "heydoc.email@gmail.com";
                 $mail->Password   = "fhickcsztesnjifo";
 
-                $mail->AddAddress("nakhe90@gmail.com", "$Dname");
+                $mail->AddAddress("nakhe90@gmail.com", "$Pemail");
                 $mail->SetFrom('heydoc.email@gmail.com', 'HeyDoc');
 
-                $mail->Subject = "Dear $Dname, Here is your payment please pay it ASAP! ";
+                $mail->Subject = "Dear $Pemail, Here is your payment please pay it ASAP! ";
                 $mail->MsgHTML("
                     <form method='POST' action='./edit/invoiceeditInput.php' style='width: 1000px; padding-left:13%;'>
                     <h2>Payment Edit</h2><section class='user'>
