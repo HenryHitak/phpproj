@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName'])){
+    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName']) && !isset($_SESSION['DoctorName'])){
         session_unset();
         session_destroy();
         header("Location: http://localhost/phpproj/login.php");

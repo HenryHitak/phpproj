@@ -20,10 +20,20 @@
           <input type="password" class="form-control" placeholder="Enter password" name="pwd" required>
           <label style="margin-top: 15px;"> Confirm Password</label> <br>
           <input type="password" class="form-control" id="cnpwd" placeholder="Enter the same password to confirm" name="cnpwd" required>
-          <label style="margin-top: 15px;"> Age</label> <br>
-          <input type="text" class="form-control" placeholder="Enter Your Age" name="age" required>
+          <label for="fname" class="form-label">Fisrt Name</label>
+          <input type="text" name="fname" class="form-control" required>
+          <label for="lname" class="form-label">Last Name</label>
+          <input type="text" name="lname" class="form-control" required>
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" name="dob" class="form-control" required>
+          <label >Patient's Gender</label> <br>
+          <input type="radio"name="gender" value="Male"><label>Male</label><br>
+          <input type="radio" name="gender" value="Female"><label>Female</label><br>
+          <input type="radio" name="gender" value="nottosay"><label>Prefer not to say</label><br>
           <label style="margin-top: 15px;"> Phone Number</label> <br>
           <input type="text" class="form-control" placeholder="Enter Your Phone Number" name="phnumber" required>
+          <label for="addr" class="form-label">Address</label>
+          <input type="text" name="addr" class="form-control" required>
         <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Register</button>
     </form>
     <p>If you already register here. Then <a href="login.php">click here</a> to log in</p>

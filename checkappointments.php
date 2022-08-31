@@ -37,6 +37,7 @@
           <p class="card-text"><?php echo $row['DoctorSpeciality']?></p>
           <p class="card-text">Appointment Date: <?php echo $row['appointDate']?></p>
           <p class="card-text"> Appointment Time: <?php echo $row['appointTime']?></p>
+          <p class="card-text"> Appointment Confirmation: <?php echo $row['confimation']?></p>
           <a href="updateappointment.php?up=<?php echo $id; ?>" class="btn btn-primary">UPDATE APPOINTMENT</a>
           <a href="cancelappointment.php?del=<?php echo $id; ?>" class="btn btn-primary mt-3">CANCEL APPOINTMENT</a> 
         </div>

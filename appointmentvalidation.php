@@ -15,6 +15,7 @@
     $userid = $row['userid'];
     $appointDate= $_POST['date'];
     $appointtime= $_POST['time'];
+    $PatientDetails= $_POST['PatientDetails'];
     $today = date('Y-m-d');
     $formDate= strtotime($appointDate);
     $tonight= strtotime($today);
@@ -22,7 +23,7 @@
         header("location:home.php");
     }
     else{
-        $sql= "INSERT INTO appointment (DoctorID, userid, DoctorName, DoctorNumber,DoctorGender,DoctorSpeciality,DoctorBio,appointDate, appointTime)VALUES ($docid, '$userid','$DoctorName','$DoctorNumber','$DoctorGender','$DoctorSpeciality','$DoctorBio','$appointDate', '$appointtime')";
+        $sql= "INSERT INTO appointment (DoctorID, userid, DoctorName, DoctorNumber,DoctorGender,DoctorSpeciality,DoctorBio,appointDate, appointTime, PatientDetails, confimation)VALUES ($docid, '$userid','$DoctorName','$DoctorNumber','$DoctorGender','$DoctorSpeciality','$DoctorBio','$appointDate', '$appointtime','$PatientDetails','not yet')";
         if(mysqli_query($conn,$sql)){
             header("location:home.php");
         }

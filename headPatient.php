@@ -28,7 +28,6 @@
                 <div class="col-md-10">
                     <nav class="menu">
                         <ul class="nav justify-content-end">
-                            <li><a href="usertable.php">Users</a></li>
                             <li><a href="viewdoc.php">Patient List</a></li>
                             <li><a href="checkappointments.php">Appointments</a></li>
                             <li><a href="Payment.php">Payment(Invoice)</a></li>

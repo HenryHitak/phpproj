@@ -39,8 +39,8 @@
                 $mail->SMTPAuth   = true;
                 $mail->Port       = 465;
                 $mail->SMTPSecure = "ssl";
-                $mail->Username   = "heydoc.email@gmail.com";
-                $mail->Password   = "fhickcsztesnjifo";
+                $mail->Username   = "@gmail.com";
+                $mail->Password   = "";
 
                 $mail->AddAddress("nakhe90@gmail.com", "$Dname");
                 $mail->SetFrom('heydoc.email@gmail.com', 'HeyDoc');

@@ -41,6 +41,8 @@
             <input type="text" class="form-control" id="DoctorBio" name="DoctorBio" value="<?php echo $row['DoctorBio']?>">
             <label for="docname">Email address</label>
             <input type="text" class="form-control" id="docname" name="docname" value="<?php echo $row['DoctorName']?>">
+            <label for="PatientDetails">Patient's Details</label>
+            <textarea class="form-control" id="PatientDetails" rows="3" name="PatientDetails"></textarea>
             <label for="date">Appointment Date</label>
             <input type="date" class="form-control"  name="date" id="date">
             <p style="color: red;">Please select a valid date.if you select privious date then you have to do an appointment process again.</p>

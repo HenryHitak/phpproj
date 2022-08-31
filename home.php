@@ -1,7 +1,7 @@
 <?php
   include 'conn.php';
     session_start();
-    if(isset($_SESSION['userName'])){
+    if(isset($_SESSION['userName']) || isset($_SESSION['DoctorName'])){
     $name = $_SESSION['userName'];
     }
     else{
