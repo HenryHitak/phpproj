@@ -22,13 +22,13 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="home.php">Hey Doc's Patient</a>
+                        <a href="home.php">Hey Doc's</a>
                     </div>
+                    <p><?php echo $_SESSION['fullname']; ?></p>
                 </div>
                 <div class="col-md-10">
                     <nav class="menu">
                         <ul class="nav justify-content-end">
-                            <li><a href="usertable.php">Users</a></li>
                             <li><a href="viewdoc.php">Doctor List</a></li>
                             <li><a href="checkappointments.php">Appointments</a></li>
                             <li><a href="Payment.php">Payment(Invoice)</a></li>

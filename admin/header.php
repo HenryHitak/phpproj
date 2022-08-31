@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['adminName'])){
+        session_unset();
+        session_destroy();
+        header("Location: http://localhost/phpproj/admin/login.php");
+    }
+    
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

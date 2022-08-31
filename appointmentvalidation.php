@@ -3,13 +3,13 @@
     include 'conn.php';
     session_start();
     $docid=$_SESSION['docid'];
-    $patient = $_SESSION['userName'];
+    $patient=$_SESSION['userName'];
     $DoctorName=$_POST['docname'];
     $DoctorNumber=$_POST['docnumber'];
     $DoctorGender=$_POST['docgender'];
     $DoctorSpeciality=$_POST['docspeciality'];
     $DoctorBio=$_POST['DoctorBio'];
-    $sql2 = "select * from usertable WHERE name = '$patient'";
+    $sql2 = "select * from User_DB WHERE email='$patient'";
     $result2 = mysqli_query($conn,$sql2);
     $row=mysqli_fetch_assoc($result2);
     $userid = $row['userid'];

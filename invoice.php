@@ -1,16 +1,10 @@
 <?php
+    session_start();
     include 'conn.php';
 
-    $query = "SELECT * FROM appointment";
+    $query = "SELECT * FROM appointment INNER JOIN User_DB on appointment.userid = User_DB.userid";
     $result = mysqli_query($conn,$query);
-    $_SESSION['userName'];
     include 'head.php';
-
-    session_start();
-    $_SESSION['userName'];
-    include 'head.php';
-    $query = "SELECT * FROM appointment";
-    $result = mysqli_query($conn,$query);
 
 ?>
 
@@ -21,19 +15,17 @@
             if($row['appointmentId']==$idx) {
                 $Dname = $row['DoctorName'];
 
-                $Pname = $row['pname'];
+                $userid = $row['userid'];
                 $doa = $row['appointDate'];
                 $atime = $row['appointTime'];
-                $Pemail = $row['pemail'];
+                $Pname = $row['firstName']." ".$row['lastName'];
+                $Pmail = $row['email'];
                 $pass = $row['pass'];
                 $dob = $row['dob'];
                 $phone = $row['phone'];
                 $addr = $row['addr'];
-
-                $Pname = "t";//.$row['pname']
                 $doa = $row['appointDate'];
                 $atime = $row['appointTime'];
-                $Pemail = "t";//.$row['pemail']
 
             }
 
@@ -47,6 +39,8 @@
         echo "</div>";
         echo "<label for='Dname'>Doctor Name</label>";
         echo "<input name='Dname' class='form-control' value='".$Dname."'/>";
+        echo "<label for='Pname'>Patient number</label>";
+        echo "<input name='Pname' class='form-control' value='".$userid."'/>";
         echo "<label for='Pname'>Patient Name</label>";
         echo "<input name='Pname' class='form-control' value='".$Pname."'/>";
         echo "<label for='doa'>Appointment Date</label>";
@@ -72,7 +66,7 @@
         echo "<label for='PF'>Parking Fee($)</label>";
         echo "<input name='PF' class='form-control'/>";
         echo "<label for='pemail'>Patient Email</label>";
-        echo "<input name='pemail' class='form-control' value='".$Pemail."'/>";
+        echo "<input name='pemail' class='form-control' value='".$Pmail."'/>";
         echo "</div></section>";
     }
 ?>
