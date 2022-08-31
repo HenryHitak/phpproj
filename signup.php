@@ -16,10 +16,12 @@
     <form class="form-horizontal" action="registration.php" method="POST">
         <label style="margin-top: 15px;"> Email</label> <br>
         <input type="email" class="form-control" placeholder="Enter your email" name="user" required>
-        <label style="margin-top: 15px;"> Password</label> <br>
-          <input type="password" class="form-control" placeholder="Enter password" name="pwd" required>
-          <label style="margin-top: 15px;"> Confirm Password</label> <br>
+        <label style="margin-top: 15px;"> Password</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+        <input type="checkbox" onclick="myFunction2()">Show Password<br>
+          <label style="margin-top: 15px;"> Confirm Password</label>
           <input type="password" class="form-control" id="cnpwd" placeholder="Enter the same password to confirm" name="cnpwd" required>
+          <input type="checkbox" onclick="myFunction1()">Show Password<br>
           <label for="fname" class="form-label">Fisrt Name</label>
           <input type="text" name="fname" class="form-control" required>
           <label for="lname" class="form-label">Last Name</label>
@@ -41,6 +43,24 @@
 </div>
 </body>
 </html>
+<script>
+  function myFunction1() {
+  var x = document.getElementById("cnpwd");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+  function myFunction2() {
+var x = document.getElementById("pwd");
+if (x.type === "password") {
+  x.type = "text";
+} else {
+  x.type = "password";
+}
+  }
+</script>
 <?php
 include 'footer.php';
 ?>

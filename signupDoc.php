@@ -15,15 +15,18 @@
   <div class="form-group">
     <form class="form-horizontal" action="registrationDoc.php" method="POST">
         <label style="margin-top: 15px;"> Email</label> <br>
-        <input type="email" class="form-control" placeholder="Enter your email" name="user" required>
+        <input type="email" class="form-control" placeholder="Enter your email" name="DoctorEmail" required>
         <label style="margin-top: 15px;"> Password</label> <br>
-          <input type="password" class="form-control" placeholder="Enter password" name="pwd" required>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="DoctorPass" required>
+        <input type="checkbox" onclick="myFunction1()">Show Password<br>
           <label style="margin-top: 15px;"> Confirm Password</label> <br>
           <input type="password" class="form-control" id="cnpwd" placeholder="Enter the same password to confirm" name="cnpwd" required>
+        <input type="checkbox" onclick="myFunction2()">Show Password<br>
           <label style="margin-top: 15px;"> Doctor Name</label> <br>
-          <input type="dname" class="form-control" placeholder="Enter Your funllname" name="dname" required>
+          <input type="text" class="form-control" placeholder="Enter Your funllname" name="DoctorName" required>
           <label style="margin-top: 15px;"> Doctor registration number</label> <br>
-          <input type="password" class="form-control" placeholder="Enter Your Doc Number" name="DoctorNumber" required>
+          <input type="password" class="form-control" id="DoctorNumber" placeholder="Enter Your Doc Number" name="DoctorNumber" required>
+        <input type="checkbox" onclick="myFunction3()">Show Doctor Number<br>
           <label for="DoctorSpeciality">Select Speciality</label>
           <select class="form-control" id="speciality" name="DoctorSpeciality">
             <option></option>
@@ -45,6 +48,32 @@
 </div>
 </body>
 </html>
+<script>
+  function myFunction3() {
+  var x = document.getElementById("DoctorNumber");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+  function myFunction2() {
+  var x = document.getElementById("cnpwd");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+  function myFunction1() {
+var x = document.getElementById("pwd");
+if (x.type === "password") {
+  x.type = "text";
+} else {
+  x.type = "password";
+}
+  }
+</script>
 <?php
 include 'footer.php';
 ?>

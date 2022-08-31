@@ -1,8 +1,8 @@
 <?php
 include 'conn.php';
-$name = $_POST["user"];
-$dname = $_POST["dname"];
-$pass = $_POST["pwd"];
+$name = $_POST["DoctorEmail"];
+$dname = $_POST["DoctorName"];
+$pass = $_POST["DoctorPass"];
 $cnpass = $_POST["cnpwd"];
 $DoctorNumber = $_POST["DoctorNumber"];
 $DoctorSpeciality = $_POST["DoctorSpeciality"];
@@ -26,7 +26,9 @@ if($num> 0){
     echo "<p>If you already register here. Then <a href='signup.php'>click here</a> to log in</p>";
 }
 else{
-    $reg = "INSERT INTO doctorrecords (DoctorName,DoctorNumber,DoctorGender,DoctorSpeciality,DoctorBio,DoctorEmail,DoctorPass) VALUES ('$dname','$DoctorNumber','later','$DoctorSpeciality','$DoctorBio','$name','$pass')";
+    $pwd = $_POST['DoctorPass'];
+    $pwdhash = password_hash($pwd,PASSWORD_BCRYPT,["cost"=>9]);
+    $reg = "INSERT INTO doctorrecords (DoctorName,DoctorNumber,DoctorEmail,DoctorPass,DoctorSpeciality,DoctorBio) VALUES ('$dname','$DoctorNumber','$name','$pass','$DoctorSpeciality','$DoctorBio')";
     $validquery=mysqli_query($conn,$reg);
     if($validquery==1){
         header('location:loginDoc.php');

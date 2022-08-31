@@ -1,23 +1,24 @@
 <?php
 include 'conn.php';
 session_start();
-$name = $_POST["user"];
-$pass = $_POST["pwd"];
+$name = $_POST["DoctorEmail"];
+$pass = $_POST["DoctorPass"];
 $sql = "select * from doctorrecords where DoctorEmail= '$name' && DoctorPass = '$pass'";
 $result = mysqli_query($conn,$sql);
 $rowNum = mysqli_num_rows($result);
 
 $_SESSION['fullname'] = $Dname;
-
-if($rowNum == 1){
+while($row = mysqli_fetch_array($result)) {
+    if(password_verify($pass,$row['pass'])){
     $_SESSION['userName'] = $name;
     $_SESSION['sessionTimeout'] = time()+600;
-    header('location:home.php');
+    header('location:homeDoc.php');
     
 }
 else{
-    header('location:login.php');
+    header('location:loginDoc.php');
 }
+
 
 
 ?>
