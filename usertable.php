@@ -3,7 +3,6 @@
     session_start();
     $_SESSION['userName'];
     include 'head.php';
-    
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $userType = $_POST['userType'];
     switch($_POST['userType']){
@@ -41,7 +40,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             <select name='userType' class='form-select form-select-sm' aria-label='.form-select-sm example'>
                 <option value="all">All</option>
                 <option value="admin">Admin</option>
+
                 <option value="doctor">Doctor</option>
+
+                <option value="doctor">doctor</option>
+
                 <option value="general">General</option>
             </select>
             <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
@@ -53,7 +56,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         <table class="table">
             <thead>
                 <tr>
+
                 <th scope="col" hidden>Id</th>
+
+                <th scope="col">Id</th>
+
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Gender</th>
@@ -133,6 +140,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
                         echo("
                         <tr>
 
+                        <td>$no</td>
                         <td>$fname</td>
                         <td>$lname</td>
                         <td>$gender</td>

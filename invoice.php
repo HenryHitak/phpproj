@@ -1,9 +1,17 @@
 <?php
     include 'conn.php';
+
     $query = "SELECT * FROM appointment";
     $result = mysqli_query($conn,$query);
     $_SESSION['userName'];
     include 'head.php';
+
+    session_start();
+    $_SESSION['userName'];
+    include 'head.php';
+    $query = "SELECT * FROM appointment";
+    $result = mysqli_query($conn,$query);
+
 ?>
 
 <?php
@@ -12,6 +20,7 @@
         while($row = mysqli_fetch_array($result)) {
             if($row['appointmentId']==$idx) {
                 $Dname = $row['DoctorName'];
+
                 $Pname = $row['pname'];
                 $doa = $row['appointDate'];
                 $atime = $row['appointTime'];
@@ -20,6 +29,12 @@
                 $dob = $row['dob'];
                 $phone = $row['phone'];
                 $addr = $row['addr'];
+
+                $Pname = "t";//.$row['pname']
+                $doa = $row['appointDate'];
+                $atime = $row['appointTime'];
+                $Pemail = "t";//.$row['pemail']
+
             }
 
         }
