@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="home.php">Hey Doc's Doctor</a>
+                        <a href="../dochome.php">Hey Doc's Doctor</a>
                     </div>
                     <p>HELLO, DR. <?php echo $dnam; ?></p>
                 </div>
