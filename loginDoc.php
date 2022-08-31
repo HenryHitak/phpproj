@@ -51,7 +51,7 @@
     </div>
     
   </form>
-  <p>If you are here for the first time please <a href="signup.php">click here</a> for register.  not registered here.</p>
+  <p>If you are here for the first time please <a href="signupDoc.php">click here</a> for register.  not registered here.</p>
 </div>
 </body>
 </html>
