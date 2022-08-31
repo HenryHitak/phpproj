@@ -7,16 +7,22 @@ $sql = "select * from doctorrecords where DoctorEmail= '$name' && DoctorPass = '
 $result = mysqli_query($conn,$sql);
 $rowNum = mysqli_num_rows($result);
 
-$_SESSION['fullname'] = $Dname;
+while($row = mysqli_fetch_array($result)) {
+    $did = $row['DoctorID'];
+    $dname = $row['DoctorName'];
+
+    $_SESSION['did'] = "$did";
+    $_SESSION['dname'] = "$dname";
+}
 
 if($rowNum == 1){
     $_SESSION['userName'] = $name;
     $_SESSION['sessionTimeout'] = time()+600;
-    header('location:home.php');
+    header('location:dochome.php');
     
 }
 else{
-    header('location:login.php');
+    header('location:doclogin.php');
 }
 
 

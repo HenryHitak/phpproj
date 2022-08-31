@@ -7,7 +7,7 @@
 
     if(mysqli_query($conns,$UserdeletCMD)){
         unset($_SESSION['dele']);
-        header("Location:../Payment.php");
+        header("Location:../docPayment.php");
     }else{
         echo "failed";
     }

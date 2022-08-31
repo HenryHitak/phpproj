@@ -4,12 +4,14 @@
     $result = mysqli_query($conn,$query);
     session_start();
     $_SESSION['userName'];
-    include '../head.php';
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
+    include './dochead.php';
 ?>
 
 <?php
      ini_set("SMTP", "aspmx.l.google.com");
-     ini_set("sendmail_from", "heydoc.email@gmail.com");
+     ini_set("sendmail_from", "heydocmailtest@gmail.com");
     if(isset($_GET['no'])){
         $idx = $_GET['no'];
         while($row = mysqli_fetch_array($result)) {
@@ -39,7 +41,7 @@
                 $mail->SMTPAuth   = true;
                 $mail->Port       = 465;
                 $mail->SMTPSecure = "ssl";
-                $mail->Username   = "@gmail.com";
+                $mail->Username   = "heydocmailtest@gmail.com";
                 $mail->Password   = "";
 
                 $mail->AddAddress("nakhe90@gmail.com", "$Dname");
@@ -103,7 +105,7 @@
     }
 ?>
 
-<button type="button" class='btn btn-primary' onclick="location.href='../Payment.php';">Back</button>
+<button type="button" class='btn btn-primary' onclick="location.href='../docPayment.php';">Back</button>
 
 <?php include '../footer.php';?>
 
