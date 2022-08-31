@@ -21,7 +21,7 @@
                 <th scope="col">Leave Time</th>
                 <th scope="col">Total Cost</th>
                 <th scope="col">Payment status</th>
-                <th scope="col">Edit invoice</th>
+                <th scope="col">Send invoice</th>
                 <th scope="col">Payment</th>
                 </tr>
             </thead>
