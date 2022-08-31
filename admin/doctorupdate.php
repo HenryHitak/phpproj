@@ -11,6 +11,8 @@
         $Doctor_ID = $row['DoctorID'];
         $Doctor_Name = $row['DoctorName'];
         $Doctor_Number = $row['DoctorNumber'];
+        $Doctor_Email = $row['DoctorEmail'];
+        $Doctor_Pass = $row['DoctorPass'];
         $Doctor_Bio = $row['DoctorBio'];
     }
 ?>
@@ -30,11 +32,15 @@
     <input type="text" class="form-control" id="name" name="name" value="<?php echo $Doctor_Name ?>">
     <label for="number">Doctor's Number</label>
     <input type="text" class="form-control" id="number" name="number" value="<?php echo $Doctor_Number ?>">
+    <label for="DoctorEmail">Doctor's email</label>
+    <input type="email" class="form-control" id="DoctorEmail" name="DoctorEmail" value="<?php echo $Doctor_Email ?>">
+    <label for="DoctorPass">Doctor's password</label>
+    <input type="password" class="form-control" id="DoctorPass" name="DoctorPass" value="<?php echo $Doctor_Pass ?>">
 
     <label >Doctor's Gender</label> <br>
     <input type="radio"name="gender" value="Male"><label>Male</label><br>
     <input type="radio" name="gender"value="Female"><label>Female</label><br>
-
+    <input type="radio" name="gender"value="nottosay"><label>Prefer not to say</label><br>
 
     <label for="speciality">Select Speciality</label>
     <select class="form-control" id="speciality" name="speciality">

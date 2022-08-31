@@ -22,6 +22,8 @@
                         <ul class="nav justify-content-end">
                             <li><a href="viewdoctor.php">Doctor List</a></li>
                             <li><a href="home.php">Register Doctor</a></li>
+                            <li><a href="viewpatient.php">Patient List</a></li>
+                            <li><a href="patienthome.php">Register Patient</a></li>
                             <li><a href="signout.php">Sign Out</a></li>
                         </ul>
                     </nav>

@@ -1,3 +1,11 @@
+<?php
+    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName'])){
+        session_unset();
+        session_destroy();
+        header("Location: http://localhost/phpproj/login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +28,14 @@
                 <div class="col-md-10">
                     <nav class="menu">
                         <ul class="nav justify-content-end">
+                            <li><a href="usertable.php">Users</a></li>
                             <li><a href="viewdoc.php">Doctor List</a></li>
                             <li><a href="checkappointments.php">Appointments</a></li>
+                            <li><a href="Payment.php">Payment(Invoice)</a></li>
                             <li><a href="signout.php">Sign Out</a></li>
                             <li><div class="input-group">
-                            <form action="search.php" method="POST">
-                                <input class="form-control rounded" name="search"/>
+                            <form action="search.php" method="POST" style="display:flex;">
+                                <input class="form-control rounded" name="search" style="width: 150px;"/>
                                 <button type="submit"  class="btn btn-primary">Search</button></form>
                                 </div>
                             </li>

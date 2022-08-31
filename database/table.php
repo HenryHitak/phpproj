@@ -4,6 +4,8 @@ $doctorrecords = "CREATE TABLE doctorrecords (
     DoctorID INT NOT NULL AUTO_INCREMENT primary key,
     DoctorName varchar(50) NOT NULL,
     DoctorNumber varchar(50) NOT NULL,
+    DoctorEmail varchar(50) NOT NULL,
+    DoctorPass varchar(50) NOT NULL,
     DoctorGender varchar(10) NOT NULL,
     DoctorSpeciality varchar(10) NOT NULL,
     DoctorBio varchar(255) NOT NULL

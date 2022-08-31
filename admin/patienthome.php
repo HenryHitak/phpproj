@@ -21,22 +21,21 @@
 <body>
     <div class="container">
     <div class="form-group">
-    <form action="doctorReg.php" method="POST">
-    <label for="name">Doctor's Name</label>
-    <input type="text" class="form-control" id="name" name="name">
-    <label for="number">Doctor's Number</label>
-    <input type="text" class="form-control" id="number" name="number">
-    <label for="DoctorEmail">Doctor's email</label>
-    <input type="email" class="form-control" id="DoctorEmail" name="DoctorEmail">
-    <label for="DoctorPass">Doctor's password</label>
-    <input type="password" class="form-control" id="DoctorPass" name="DoctorPass">
-    <label >Doctor's Gender</label> <br>
-    <input type="radio"name="gender" value="Male"><label>Male</label><br>
-    <input type="radio" name="gender"value="Female"><label>Female</label><br>
-    <input type="radio" name="gender"value="nottosay"><label>Prefer not to say</label><br>
+    <form action="patientReg.php" method="POST">
+    <label for="PatientName">Patient's Name</label>
+    <input type="text" class="form-control" id="PatientName" name="PatientName">
+    <label for="PatientEmail">Patient's Email</label>
+    <input type="email" class="form-control" id="PatientEmail" name="PatientEmail">
+    <label for="password">Patient's Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+    <label >Patient's Gender</label> <br>
+    <input type="radio"name="PatientGender" value="Male"><label>Male</label><br>
+    <input type="radio" name="PatientGender"value="Female"><label>Female</label><br>
+    <input type="radio" name="PatientGender"value="nottosay"><label>Prefer not to say</label><br>
 
-    <label for="speciality">Select Speciality</label>
-    <select class="form-control" id="speciality" name="speciality">
+
+    <label for="PatientDepartment">Select Department</label>
+    <select class="form-control" id="PatientDepartment" name="PatientDepartment">
       <option></option>
       <option>Surgery</option>
       <option>Gastrology</option>
@@ -48,8 +47,8 @@
       <option>Pediatrics</option>
     </select>
 
-    <label for="Bio">Doctor's Bio</label>
-    <textarea class="form-control" id="bio" rows="3" name="bio"></textarea>
+    <label for="PatientDetails">Patient's Details</label>
+    <textarea class="form-control" id="PatientDetails" rows="3" name="PatientDetails"></textarea>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>

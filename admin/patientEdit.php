@@ -11,19 +11,18 @@
 include 'conn.php';
 include 'header.php';
 session_start();
-$Doctor_Id = $_SESSION['id'];
-$name= $_POST["name"];
-$number= $_POST["number"];
-$email= $_POST["DoctorEmail"];
-$pass= $_POST["DoctorPass"];
-$gender= $_POST["gender"];
-$speciality= $_POST["speciality"];
-$bio= $_POST["bio"];
-$sql = "UPDATE doctorrecords SET DoctorName ='$name', DoctorNumber='$number', DoctorEmail='$email',DoctorPass='$pass',DoctorGender='$gender',DoctorSpeciality='$speciality',DoctorBio='$bio' where DoctorID=$Doctor_Id";
+$Patient_Id = $_SESSION['id'];
+$name= $_POST["PatientName"];
+$email= $_POST["PatientEmail"];
+$pass= $_POST["password"];
+$PatientGender= $_POST["PatientGender"];
+$department= $_POST["PatientDepartment"];
+$details= $_POST["PatientDetails"];
+$sql = "UPDATE patientrecords SET PatientName ='$name', PatientEmail='$email',password='$pass',PatientGender='$PatientGender',PatientDepartment='$department',PatientDetails='$details' where PatientID=$Patient_Id";
         $result = mysqli_query($conn,$sql);
         if($result)
         {
-            header("location:viewdoctor.php");
+            header("location:viewpatient.php");
         }
         else{
             echo"Something Error Happen for registration again please";

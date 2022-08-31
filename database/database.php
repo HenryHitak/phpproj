@@ -11,7 +11,7 @@ if (!$conn) {
 }
 
 // Create database
-$sql = "CREATE DATABASE project480";
+$sql = "CREATE DATABASE phpproj";
 if (mysqli_query($conn, $sql)) {
     echo "database create";
 } 
