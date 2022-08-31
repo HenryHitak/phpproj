@@ -1,13 +1,13 @@
 <?php
-    session_start();
+    include 'header.php';
+
     $name= $_SESSION['adminName'];
     if($name=="admin"){
     }
     else{
       header('location:login.html');
     }
-    include 'header.php';
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

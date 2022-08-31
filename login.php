@@ -52,6 +52,10 @@
     
   </form>
   <p>If you are here for the first time please <a href="signup.php">click here</a> for register.  not registered here.</p>
+
+  <div>
+    <a href="./admin/login.html">Administrator Login</a>
+  </div>
 </div>
 </body>
 </html>

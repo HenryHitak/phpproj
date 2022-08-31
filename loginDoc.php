@@ -30,7 +30,7 @@
 </form>
 <div class="container">
 <h1 style="margin-left: 60vh; margin-bottom: 50px">Log In</h1>
-  <form   class="form-horizontal" action="validation.php" method="POST">
+  <form   class="form-horizontal" action="docvalidation.php" method="POST">
     <div class="form-group">
       <div class="col-sm-10">
       <label style="margin-top: 15px;"> Email</label> <br>
