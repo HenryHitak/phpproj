@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- 생성 시간: 22-08-31 11:32
+-- 생성 시간: 22-08-31 20:20
 -- 서버 버전: 10.4.21-MariaDB
 -- PHP 버전: 7.4.29
 
@@ -55,16 +55,20 @@ CREATE TABLE `appointment` (
   `DoctorSpeciality` varchar(50) NOT NULL,
   `DoctorBio` varchar(500) NOT NULL,
   `appointDate` varchar(50) NOT NULL,
-  `appointTime` varchar(50) NOT NULL
+  `appointTime` varchar(50) NOT NULL,
+  `PatientDetails` text NOT NULL,
+  `confimation` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 테이블의 덤프 데이터 `appointment`
 --
 
-INSERT INTO `appointment` (`appointmentId`, `DoctorID`, `userid`, `DoctorName`, `DoctorNumber`, `DoctorGender`, `DoctorSpeciality`, `DoctorBio`, `appointDate`, `appointTime`) VALUES
-(3, 1, 7, 'Hitak', '123456', 'Male', 'Medicine', 'A psychologist usually has an advanced degree, mos', '2022-09-10', '14'),
-(4, 2, 7, 'Nak', '234567', 'Male', 'Dermatology', 'Dermatology is the branch of medicine dealing with', '2022-09-10', '10');
+INSERT INTO `appointment` (`appointmentId`, `DoctorID`, `userid`, `DoctorName`, `DoctorNumber`, `DoctorGender`, `DoctorSpeciality`, `DoctorBio`, `appointDate`, `appointTime`, `PatientDetails`, `confimation`) VALUES
+(3, 1, 7, 'Hitak', '123456', 'Male', 'Medicine', 'A psychologist usually has an advanced degree, mos', '2022-09-10', '14', '', ''),
+(4, 2, 7, 'Nak', '234567', 'Male', 'Dermatology', 'Dermatology is the branch of medicine dealing with', '2022-09-10', '10', '', ''),
+(5, 10, 40, 'Strange', '1234512344', 'later', 'Surgery', '1244', '2022-09-09', '10', 'I want People to forget that Im the spiderman.', 'not yet'),
+(7, 3, 40, 'Milad', '99999999', 'Female', 'Allergy and immunology', 'IT specialist', '2022-09-10', '11', 'PHP is hard. oh my god', 'not yet');
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,8 @@ INSERT INTO `doctorrecords` (`DoctorID`, `DoctorName`, `DoctorNumber`, `DoctorGe
 (3, 'Milad', 99999999, 'Female', 'Allergy and immunology', 'IT specialist', 'doctor3@mail.com', '1234'),
 (4, 'Alyce', 77777777, 'Female', 'Medicine', 'IT specialist', 'doctor4@mail.com', '1234'),
 (8, 'admin', 99999999, 'Male', 'Surgery', '', 'doctor5@mail.com', '1234'),
-(9, 'Nakhyeon', 987666, 'Male', 'Ear Nose Throat Head And Neck Surgery', 'amaing', 'admin@gmail.com', 'admin');
+(9, 'Nakhyeon', 987666, 'Male', 'Ear Nose Throat Head And Neck Surgery', 'amaing', 'admin@gmail.com', 'admin'),
+(10, 'Strange', 1234512344, 'later', 'Surgery', '1244', 'doctor17@mail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -123,29 +128,8 @@ CREATE TABLE `Invoice` (
 
 INSERT INTO `Invoice` (`appointmentId`, `PatientName`, `DoctortName`, `PatientEmail`, `AppoDate`, `Vtime`, `Ltime`, `preFile`, `MSF`, `MF`, `PF`, `Total`, `pcd`) VALUES
 (2, 'testtest', 'Hitak', 'nakhe@hanmail.net', '2022-08-27', 8, 13, 'test', 22, 44, 22, '88', 'yet'),
-(3, 'Langsdon Phoenix', 'Hitak', 'lphoenix3@joomla.org', '2022-09-10', 14, 13, 'test', 44, 44, 22, '110', 'payment complete');
-
--- --------------------------------------------------------
-
---
--- 테이블 구조 `usertable`
---
-
-CREATE TABLE `usertable` (
-  `userid` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `age` int(11) NOT NULL,
-  `phoneNumber` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 테이블의 덤프 데이터 `usertable`
---
-
-INSERT INTO `usertable` (`userid`, `name`, `password`, `age`, `phoneNumber`) VALUES
-(1, 'admin@gmail.com', 'admin', 20, '44444444'),
-(2, 'nakhe@hanmail.net', '1234', 22, '12341234');
+(3, 'Langsdon Phoenix', 'Hitak', 'lphoenix3@joomla.org', '2022-09-10', 14, 13, 'test', 44, 44, 22, '110', 'payment complete'),
+(5, 'Peter Parker', 'Strange', 'patient@mail.com', '2022-09-09', 10, 13, 'test', 33, 100, 1, '134', 'yet');
 
 -- --------------------------------------------------------
 
@@ -202,7 +186,8 @@ INSERT INTO `User_DB` (`userid`, `firstName`, `lastName`, `gender`, `dob`, `emai
 (36, 'testtest', 'test', 'Male', '2022-08-18', 'nakhe@hanmail.net', 'dsdfa', '60497833', '871 Roth Avenue', 'salt'),
 (37, 'nak', 'Kim', 'Male', '2022-08-31', 'nakhe@hanmail.net', 'dsdfa', '636-264-1723', '경기도 성남시 수정구 복정로32번길 22 (복정동)', 'salt'),
 (38, 'testtest', 'testtest', 'Male', '2022-08-11', 'nakhe@hanmail.et', '1234', '1234', '1234', 'salt'),
-(39, 'Naktest', 'naktest', 'Female', '2022-08-26', '', 'admin', '1234', '123455', 'salt');
+(39, 'Naktest', 'naktest', 'Female', '2022-08-26', '', 'admin', '1234', '123455', 'salt'),
+(40, 'Peter', 'Parker', 'Male', '2021-05-05', 'patient@mail.com', '1234', '12354123', '999 multiuniverse ST', 'salt');
 
 --
 -- 덤프된 테이블의 인덱스
@@ -229,12 +214,6 @@ ALTER TABLE `Invoice`
   ADD KEY `appoint` (`appointmentId`);
 
 --
--- 테이블의 인덱스 `usertable`
---
-ALTER TABLE `usertable`
-  ADD PRIMARY KEY (`userid`);
-
---
 -- 테이블의 인덱스 `User_DB`
 --
 ALTER TABLE `User_DB`
@@ -248,25 +227,19 @@ ALTER TABLE `User_DB`
 -- 테이블의 AUTO_INCREMENT `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 테이블의 AUTO_INCREMENT `doctorrecords`
 --
 ALTER TABLE `doctorrecords`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- 테이블의 AUTO_INCREMENT `usertable`
---
-ALTER TABLE `usertable`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- 테이블의 AUTO_INCREMENT `User_DB`
 --
 ALTER TABLE `User_DB`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- 덤프된 테이블의 제약사항

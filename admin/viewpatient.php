@@ -19,18 +19,18 @@
                 $result = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($result);
             break;
-            case "doctor":
-                $query = "SELECT * FROM User_DB WHERE occupation = 'doctor'";
+            case "Male":
+                $query = "SELECT * FROM User_DB WHERE gender = 'Male'";
                 $result = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($result);
             break;
-            case "general":
-                $query = "SELECT * FROM User_DB WHERE occupation = 'general'";
+            case "Female":
+                $query = "SELECT * FROM User_DB WHERE gender = 'Female'";
                 $result = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($result);
             break;
-            case "admin":
-                $query = "SELECT * FROM User_DB WHERE occupation = 'admin'";
+            case "Prefer not to say":
+                $query = "SELECT * FROM User_DB WHERE gender = 'Prefer not to say'";
                 $result = mysqli_query($conn,$query);
                 $rows = mysqli_num_rows($result);
             break;
@@ -45,15 +45,15 @@
     <!--sorting and searching -->
     <div class='table-top'>
         <form method='POST' action="<?php echo $_SERVER['PHP_SELF']?>">
-            <select name='userType' class='form-select form-select-sm' aria-label='.form-select-sm example'>
+            <select name='userType' class='btn btn-outline-secondary' aria-label='.form-select-sm example'>
                 <option value="all">All</option>
-                <option value="admin">Admin</option>
 
-                <option value="doctor">Doctor</option>
+                <option value="Male">Male</option>
 
-                <option value="doctor">doctor</option>
+                <option value="Female">Female</option>
 
-                <option value="general">General</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+
             </select>
             <button class='btn btn-outline-secondary' type='submit' id='button-addon2'>Sort</button>
         </form>

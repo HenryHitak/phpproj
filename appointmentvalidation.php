@@ -25,10 +25,10 @@
     else{
         $sql= "INSERT INTO appointment (DoctorID, userid, DoctorName, DoctorNumber,DoctorGender,DoctorSpeciality,DoctorBio,appointDate, appointTime, PatientDetails, confimation)VALUES ($docid, '$userid','$DoctorName','$DoctorNumber','$DoctorGender','$DoctorSpeciality','$DoctorBio','$appointDate', '$appointtime','$PatientDetails','not yet')";
         if(mysqli_query($conn,$sql)){
-            header("location:home.php");
+            header("location:checkappointments.php");
         }
         else{
-            header("location:home.php");
+            header("location:checkappointments.php");
         }
     }
 
