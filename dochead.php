@@ -23,9 +23,9 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="homeDoc.php">Hey Doc's Doctor</a>
+                        <a href="viewpatient.php">Hey Doc's Doctor</a>
                     </div>
-                    <p>HELLO, DR. <?php echo $_SESSION['fullname']; ?></p>
+                    <p>HELLO, DR. <?php echo $_SESSION['dname']; ?></p>
                 </div>
                 <div class="col-md-10">
                     <nav class="menu">

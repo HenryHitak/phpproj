@@ -18,7 +18,7 @@
     else{
       header('location:loginDoc.php');
     }
-    include 'dochead.php';
+    include 'head.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
