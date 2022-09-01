@@ -28,7 +28,7 @@ if($num> 0){
 else{
     $pwd = $_POST['DoctorPass'];
     $pwdhash = password_hash($pwd,PASSWORD_BCRYPT,["cost"=>9]);
-    $reg = "INSERT INTO doctorrecords (DoctorName,DoctorNumber,DoctorEmail,DoctorPass,DoctorSpeciality,DoctorBio) VALUES ('$dname','$DoctorNumber','$name','$pass','$DoctorSpeciality','$DoctorBio')";
+    $reg = "INSERT INTO doctorrecords (DoctorName,DoctorNumber,DoctorGender,DoctorSpeciality,DoctorBio,DoctorEmail,DoctorPass) VALUES ('$dname','$DoctorNumber','later','$DoctorSpeciality','$DoctorBio','$name','$pwdhash')";
     $validquery=mysqli_query($conn,$reg);
     if($validquery==1){
         header('location:loginDoc.php');

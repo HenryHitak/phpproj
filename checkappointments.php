@@ -22,7 +22,7 @@
       $sql1 = "SELECT * FROM User_DB WHERE email = '$name'";
       if(mysqli_query($conn, $sql1)){
           $row = mysqli_fetch_assoc(mysqli_query($conn, $sql1));
-          $userid= $row['user_num'];
+          $userid= $row['userid'];
       $sql2 = "SELECT * FROM appointment WHERE userid= $userid";
       if(mysqli_query($conn, $sql2)){
       $result = mysqli_query($conn, $sql2);
