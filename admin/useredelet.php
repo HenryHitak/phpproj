@@ -2,8 +2,8 @@
 include 'conn.php';
 include 'header.php';
 session_start();
-$id = $_GET['Del'];
-$sql = "DELETE FROM patientrecords WHERE PatientID=$id";
+$no = $_SESSION['del'];
+$sql = "DELETE FROM user_db user_num = $no";
         $result = mysqli_query($conn,$sql);
         if($result)
         {
@@ -11,7 +11,7 @@ $sql = "DELETE FROM patientrecords WHERE PatientID=$id";
         }
         else{
             echo"Something Error Happen for Delete again please";
-            echo '<a href="home.php">click here</a>';
+            echo '<a href="userUpdate.php">click here</a>';
         }
         include 'footer.php';
 ?>

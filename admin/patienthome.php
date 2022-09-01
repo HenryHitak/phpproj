@@ -1,12 +1,7 @@
 <?php
-    session_start();
-    $name= $_SESSION['adminName'];
-    if($name=="admin"){
-    }
-    else{
-      header('location:login.html');
-    }
+
     include 'header.php';
+    
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,36 +16,57 @@
 <body>
     <div class="container">
     <div class="form-group">
-    <form action="patientReg.php" method="POST">
-    <label for="PatientName">Patient's Name</label>
-    <input type="text" class="form-control" id="PatientName" name="PatientName">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label for="fname" class="form-label">Fisrt Name</label>
+    <input type="text" name="fname" class="form-control" required>
+    <label for="lname" class="form-label">Last Name</label>
+    <input type="text" name="lname" class="form-control" required>
+    <label for="dob" class="form-label">Date of Birth</label>
+    <input type="date" name="dob" class="form-control" required>
     <label for="PatientEmail">Patient's Email</label>
-    <input type="email" class="form-control" id="PatientEmail" name="PatientEmail">
-    <label for="password">Patient's Password</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <input type="email" class="form-control" id="PatientEmail" name="PatientEmail" required>
+    <label for="pass">Patient's Password</label>
+    <input type="password" class="form-control" id="password" name="pass">
     <label >Patient's Gender</label> <br>
-    <input type="radio"name="PatientGender" value="Male"><label>Male</label><br>
-    <input type="radio" name="PatientGender"value="Female"><label>Female</label><br>
-    <input type="radio" name="PatientGender"value="nottosay"><label>Prefer not to say</label><br>
+    <input type="radio"name="gender" value="Male"><label>Male</label><br>
+    <input type="radio" name="gender" value="Female"><label>Female</label><br>
+    <input type="radio" name="gender" value="nottosay"><label>Prefer not to say</label><br>
+    <label for="phone" class="form-label">Phone</label>
+    <input type="text" name="phone" class="form-control" required>
+    <label for="addr" class="form-label">Address</label>
+    <input type="text" name="addr" class="form-control" required>
 
 
-    <label for="PatientDepartment">Select Department</label>
-    <select class="form-control" id="PatientDepartment" name="PatientDepartment">
-      <option></option>
-      <option>Surgery</option>
-      <option>Gastrology</option>
-      <option>Medicine</option>
-      <option> Ear Nose Throat Head And Neck Surgery</option>
-      <option>Allergy and immunology</option>
-      <option>Neurology</option>
-      <option>Gynecologist</option>
-      <option>Pediatrics</option>
-    </select>
-
-    <label for="PatientDetails">Patient's Details</label>
-    <textarea class="form-control" id="PatientDetails" rows="3" name="PatientDetails"></textarea>
+  
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+      <?php
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $dbUsername = "root";
+            $dbServername = "localhost";
+            $dbPass = "";
+            $dbName = "phpproj";
+
+            $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbName);
+
+            if($dbCon->connect_error){
+                die("Connection error ".$dbCon->connect_error);
+            }else{
+                $insertCmd = "INSERT INTO User_DB (firstName,lastName,gender,dob,email,pass,phone,addr,salt) VALUES ('".$_POST['fname']."','".$_POST['lname']."','".$_POST['gender']."','".$_POST['dob']."','".$_POST['PatientEmail']."','".$_POST['pass']."','".$_POST['phone']."','".$_POST['addr']."','salt')";
+                $result = $dbCon->query($insertCmd);
+
+                if($result === true){
+                    echo "<h1 style='color: green;'>DONE!!!!</h1>";
+                }else{
+                    echo "<h1 style='color: red;'>".$dbCon->error."</h1>";
+                }
+                $dbCon->close();
+
+                header('Location:viewpatient.php');
+            }
+        }
+      ?> 
     </div>
     </div>
 </body>

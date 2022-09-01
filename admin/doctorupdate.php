@@ -1,6 +1,5 @@
 <?php include 'header.php';
     include 'conn.php';
-    session_start();
     $id = $_GET['GetID'];
     $_SESSION['id'] = $id;
     $query = " select * from doctorrecords where DoctorID= $id";
@@ -31,11 +30,13 @@
     <label for="name">Doctor's Name</label>
     <input type="text" class="form-control" id="name" name="name" value="<?php echo $Doctor_Name ?>">
     <label for="number">Doctor's Number</label>
-    <input type="text" class="form-control" id="number" name="number" value="<?php echo $Doctor_Number ?>">
+    <input type="password" class="form-control" id="number" name="number" value="<?php echo $Doctor_Number ?>">
+    <input type='checkbox' onclick='myFunction2()'>Show Password<br>
     <label for="DoctorEmail">Doctor's email</label>
     <input type="email" class="form-control" id="DoctorEmail" name="DoctorEmail" value="<?php echo $Doctor_Email ?>">
     <label for="DoctorPass">Doctor's password</label>
     <input type="password" class="form-control" id="DoctorPass" name="DoctorPass" value="<?php echo $Doctor_Pass ?>">
+    <input type='checkbox' onclick='myFunction1()'>Show Password<br>
 
     <label >Doctor's Gender</label> <br>
     <input type="radio"name="gender" value="Male"><label>Male</label><br>
@@ -62,4 +63,22 @@
     </div>
     </div>
 </body>
+<script>
+      function myFunction1() {
+  var x = document.getElementById("DoctorPass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+      function myFunction2() {
+  var x = document.getElementById("number");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </html>

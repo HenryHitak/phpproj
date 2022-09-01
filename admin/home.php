@@ -1,13 +1,13 @@
 <?php
-    session_start();
+    include 'header.php';
+
     $name= $_SESSION['adminName'];
     if($name=="admin"){
     }
     else{
       header('location:login.html');
     }
-    include 'header.php';
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,11 +25,13 @@
     <label for="name">Doctor's Name</label>
     <input type="text" class="form-control" id="name" name="name">
     <label for="number">Doctor's Number</label>
-    <input type="text" class="form-control" id="number" name="number">
+    <input type="password" class="form-control" id="number" name="number">
+    <input type='checkbox' onclick='myFunction2()'>Show Password<br>
     <label for="DoctorEmail">Doctor's email</label>
     <input type="email" class="form-control" id="DoctorEmail" name="DoctorEmail">
     <label for="DoctorPass">Doctor's password</label>
     <input type="password" class="form-control" id="DoctorPass" name="DoctorPass">
+    <input type='checkbox' onclick='myFunction1()'>Show Password<br>
     <label >Doctor's Gender</label> <br>
     <input type="radio"name="gender" value="Male"><label>Male</label><br>
     <input type="radio" name="gender"value="Female"><label>Female</label><br>
@@ -55,4 +57,22 @@
     </div>
     </div>
 </body>
+<script>
+  function myFunction1() {
+  var x = document.getElementById("DoctorPass");
+  if (x.type === "password") {
+  x.type = "text";
+  } else {
+  x.type = "password";
+  }
+  }
+  function myFunction2() {
+  var x = document.getElementById("number");
+  if (x.type === "password") {
+  x.type = "text";
+  } else {
+  x.type = "password";
+  }
+  }
+</script>
 </html>

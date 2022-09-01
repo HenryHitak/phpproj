@@ -30,17 +30,17 @@
 </form>
 <div class="container">
 <h1 style="margin-left: 60vh; margin-bottom: 50px">Log In</h1>
-  <form   class="form-horizontal" action="validation.php" method="POST">
+  <form   class="form-horizontal" action="docvalidation.php" method="POST">
     <div class="form-group">
       <div class="col-sm-10">
       <label style="margin-top: 15px;"> Email</label> <br>
-        <input type="email" class="form-control" placeholder="Enter your email" name="user">
+        <input type="email" class="form-control" placeholder="Enter your email" name="DoctorEmail">
       </div>
     </div>
     <div  class="form-group">
       <div class="col-sm-10">    
       <label style="margin-top: 15px;"> Password</label> <br>      
-        <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
+        <input type="password" class="form-control" id="DoctorPass" placeholder="Enter your password" name="DoctorPass">
         <input type="checkbox" onclick="myFunction1()">Show Password<br>
       </div>
     </div>
@@ -52,8 +52,7 @@
     </div>
     
   </form>
-  <p>If you are here for the first time please <a href="signup.php">click here</a> for register.  not registered here.</p>
-
+  <p>If you are here for the first time please <a href="signupDoc.php">click here</a> for register.  not registered here.</p>
   <div>
     <a href="./admin/login.html">Administrator Login</a>
   </div>
@@ -62,7 +61,7 @@
 </html>
 <script>
   function myFunction1() {
-  var x = document.getElementById("pwd");
+  var x = document.getElementById("DoctorPass");
   if (x.type === "password") {
     x.type = "text";
   } else {

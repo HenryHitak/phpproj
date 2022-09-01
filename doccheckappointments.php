@@ -2,7 +2,9 @@
   include 'conn.php';
     session_start();
     $name = $_SESSION['userName'];
-    include 'head.php';
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
+    include './dochead.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,26 +21,27 @@
     <div class="row pt-5">
     
     <?php
-      $sql1 = "SELECT * FROM User_DB WHERE email = '$name'";
+      $sql1 = "SELECT * FROM doctorrecords WHERE DoctorEmail = '$name'";
       if(mysqli_query($conn, $sql1)){
           $row = mysqli_fetch_assoc(mysqli_query($conn, $sql1));
-          $userid= $row['user_num'];
-      $sql2 = "SELECT * FROM appointment WHERE userid= $userid";
-      if(mysqli_query($conn, $sql2)){
-      $result = mysqli_query($conn, $sql2);
-      if (mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_assoc($result)){
-          $id= $row['appointmentId'];
+          $userid= $row['DoctorID'];
+          $sql2 = "SELECT * FROM appointment INNER JOIN User_DB on appointment.userid = User_DB.userid WHERE DoctorID = '$userid'";
+          if(mysqli_query($conn, $sql2)){
+            $result = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result) > 0){
+              while($row = mysqli_fetch_assoc($result)){
+                $id= $row['appointmentId'];
           ?>
           <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><?php echo $row['DoctorName']?></h5>
-          <p class="card-text"><?php echo $row['DoctorSpeciality']?></p>
+          <h5 class="card-title">Patient :<?php echo $row['firstName']." ".$row['lastName']; ?></h5>
+          <p class="card-text"><?php echo $row['PatientDetails']?></p>
           <p class="card-text">Appointment Date: <?php echo $row['appointDate']?></p>
           <p class="card-text"> Appointment Time: <?php echo $row['appointTime']?></p>
           <p class="card-text"> Appointment Confirmation: <?php echo $row['confimation']?></p>
           <a href="updateappointment.php?up=<?php echo $id; ?>" class="btn btn-primary">UPDATE APPOINTMENT</a>
+          <a href="./mailsend/confirmmail.php?up=<?php echo $id; ?>" class="btn btn-primary">Comfirm</a>
           <a href="cancelappointment.php?del=<?php echo $id; ?>" class="btn btn-primary mt-3">CANCEL APPOINTMENT</a> 
         </div>
       </div>

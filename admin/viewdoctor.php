@@ -15,7 +15,6 @@
         <th>Doctor Name</th>
         <th>Doctor's Number</th>
         <th>Doctor Email</th>
-        <th>Doctor Password</th>
         <th>Doctor Gender</th>
         <th>Doctor Speciality</th>
         <th>Doctor Information</th>
@@ -36,13 +35,12 @@
 			echo "<td>" . $row['DoctorName'] . "</td>";
             echo "<td>" . $row['DoctorNumber'] . "</td>";
             echo "<td>" . $row['DoctorEmail'] . "</td>";
-            echo "<td>" . $row['DoctorPass'] . "</td>";
             echo "<td>" . $row['DoctorGender'] . "</td>";
             echo "<td>" . $row['DoctorSpeciality'] . "</td>";
             echo "<td>" . $row['DoctorBio'] . "</td>";
             ?>
             <td> <button class="btn btn-primary"><a href="doctorupdate.php?GetID=<?php echo $id; ?>" style="color: white;">Update</a></button> </td>
-            <td> <button class="btn btn-primary"><a href="doctorrecorddelete.php?Del='<?php echo $id;?>'" style="color: white;">Delete</a></button> </td>
+            <td> <button class="btn btn-primary" style="background-color: red; border:none;"><a href="doctorrecorddelete.php?Del='<?php echo $id;?>'" style="color: white;">Delete</a></button> </td>
             <?php
 			echo "</tr>";
             }

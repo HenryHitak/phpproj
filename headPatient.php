@@ -1,5 +1,5 @@
-<?php
-    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName']) && !isset($_SESSION['DoctorName'])){
+2<?php
+    if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName'])){
         session_unset();
         session_destroy();
         header("Location: http://localhost/phpproj/login.php");
@@ -22,14 +22,13 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="home.php">Hey Doc's</a>
+                        <a href="home.php">Hey Doc's Doctor</a>
                     </div>
-                    <p><?php echo $_SESSION['fullname']; ?></p>
                 </div>
                 <div class="col-md-10">
                     <nav class="menu">
                         <ul class="nav justify-content-end">
-                            <li><a href="viewdoc.php">Doctor List</a></li>
+                            <li><a href="viewdoc.php">Patient List</a></li>
                             <li><a href="checkappointments.php">Appointments</a></li>
                             <li><a href="Payment.php">Payment(Invoice)</a></li>
                             <li><a href="signout.php">Sign Out</a></li>
