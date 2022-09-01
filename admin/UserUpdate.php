@@ -11,7 +11,7 @@
     if(isset($_GET['no'])){
         $idx = $_GET['no'];
         while($row = mysqli_fetch_array($result)) {
-            if($row['user_num']==$idx) {
+            if($row['userid']==$idx) {
                 $fname = $row['firstName'];
                 $lname = $row['lastName'];
                 $dob = $row['dob'];
@@ -25,7 +25,7 @@
             }
         }
 
-        echo "<form method='POST' action='./edit/useredit.php' style='width: 1000px; padding-left:13%;'>";
+        echo "<form method='POST' action='./useredit.php' style='width: 1000px; padding-left:13%;'>";
         echo "<h2>User Info Details</h2><section class='user'>";
         echo "<div>";
         echo "<label for='id'>ID number</label>";
@@ -57,11 +57,9 @@
     }
 ?>
         <div style="text-align:right;">
-            <a href='./edit/useredelet.php' class="btn btn-danger">Del</a>
-            <button type="submit" class='btn btn-primary'>Save</button>
-            <button type="button" class='btn btn-primary' onclick="location.href='./UserTable.php';">Back</button>
-            <button class="btn btn-primary"><a href="viewpatient.php?GetID=<?php echo $no; ?>" style="color: white;">Update</a></button>
-            <button class="btn btn-primary"><a href="useredelet.php?Del='<?php echo $no;?>'" style="color: white;">Delete</a></button>
+            <button type="button" class='btn btn-primary' onclick="location.href='./viewpatient.php';">Back</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="useredelet.php" class="btn btn-primary" style="background-color: red; border:none;">Delete</a>
         </div>
 </form>
 <script>
