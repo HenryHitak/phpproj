@@ -1,13 +1,26 @@
 <?php
+<<<<<<< HEAD
   include 'conn.php';
     session_start();
+=======
+  include './conn.php';
+    session_start();
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
+>>>>>>> 3f0a74b217c6b8d17e4868f872b181352e3ad4d2
     if(isset($_SESSION['userName']) || isset($_SESSION['DoctorName'])){
     $name = $_SESSION['userName'];
     }
     else{
+<<<<<<< HEAD
       header('location:loginDoc.php');
     }
     include 'head.php';
+=======
+      header('location:login.php');
+    }
+    include 'dochead.php';
+>>>>>>> 3f0a74b217c6b8d17e4868f872b181352e3ad4d2
     ?>
 <!DOCTYPE html>
 <html lang="en">
