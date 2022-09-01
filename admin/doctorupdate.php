@@ -1,6 +1,5 @@
 <?php include 'header.php';
     include 'conn.php';
-    session_start();
     $id = $_GET['GetID'];
     $_SESSION['id'] = $id;
     $query = " select * from doctorrecords where DoctorID= $id";

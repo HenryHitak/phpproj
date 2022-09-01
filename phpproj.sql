@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- 생성 시간: 22-08-31 20:20
--- 서버 버전: 10.4.21-MariaDB
--- PHP 버전: 7.4.29
+-- Generation Time: Sep 01, 2022 at 06:22 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 데이터베이스: `phpproj`
+-- Database: `phpproj`
 --
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 테이블의 덤프 데이터 `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`userName`, `password`) VALUES
@@ -42,7 +42,7 @@ INSERT INTO `admin` (`userName`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `appointment`
+-- Table structure for table `appointment`
 --
 
 CREATE TABLE `appointment` (
@@ -61,7 +61,7 @@ CREATE TABLE `appointment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 테이블의 덤프 데이터 `appointment`
+-- Dumping data for table `appointment`
 --
 
 INSERT INTO `appointment` (`appointmentId`, `DoctorID`, `userid`, `DoctorName`, `DoctorNumber`, `DoctorGender`, `DoctorSpeciality`, `DoctorBio`, `appointDate`, `appointTime`, `PatientDetails`, `confimation`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `appointment` (`appointmentId`, `DoctorID`, `userid`, `DoctorName`, 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `doctorrecords`
+-- Table structure for table `doctorrecords`
 --
 
 CREATE TABLE `doctorrecords` (
@@ -88,7 +88,7 @@ CREATE TABLE `doctorrecords` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 테이블의 덤프 데이터 `doctorrecords`
+-- Dumping data for table `doctorrecords`
 --
 
 INSERT INTO `doctorrecords` (`DoctorID`, `DoctorName`, `DoctorNumber`, `DoctorGender`, `DoctorSpeciality`, `DoctorBio`, `DoctorEmail`, `DoctorPass`) VALUES
@@ -98,12 +98,14 @@ INSERT INTO `doctorrecords` (`DoctorID`, `DoctorName`, `DoctorNumber`, `DoctorGe
 (4, 'Alyce', 77777777, 'Female', 'Medicine', 'IT specialist', 'doctor4@mail.com', '1234'),
 (8, 'admin', 99999999, 'Male', 'Surgery', '', 'doctor5@mail.com', '1234'),
 (9, 'Nakhyeon', 987666, 'Male', 'Ear Nose Throat Head And Neck Surgery', 'amaing', 'admin@gmail.com', 'admin'),
-(10, 'Strange', 1234512344, 'later', 'Surgery', '1244', 'doctor17@mail.com', '1234');
+(10, 'Strange', 1234512344, 'later', 'Surgery', '1244', 'doctor17@mail.com', '1234'),
+(11, 'Strange', 1234, 'later', 'Medicine', 'dasdfasdf', 'testdoctor120@mail.com', '1234'),
+(12, 'nak strange', 12341234, 'later', 'Ear Nose Throat Head And Neck Surgery', '2341234', 'hashdoctor@mail.com', '$2y$09$czCBvZOZMNo8A5xgolfbZ.N/ZxHYuR.D2O8ojP7hMS4cHoTByHi/K');
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `Invoice`
+-- Table structure for table `Invoice`
 --
 
 CREATE TABLE `Invoice` (
@@ -123,18 +125,18 @@ CREATE TABLE `Invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 테이블의 덤프 데이터 `Invoice`
+-- Dumping data for table `Invoice`
 --
 
 INSERT INTO `Invoice` (`appointmentId`, `PatientName`, `DoctortName`, `PatientEmail`, `AppoDate`, `Vtime`, `Ltime`, `preFile`, `MSF`, `MF`, `PF`, `Total`, `pcd`) VALUES
 (2, 'testtest', 'Hitak', 'nakhe@hanmail.net', '2022-08-27', 8, 13, 'test', 22, 44, 22, '88', 'yet'),
 (3, 'Langsdon Phoenix', 'Hitak', 'lphoenix3@joomla.org', '2022-09-10', 14, 13, 'test', 44, 44, 22, '110', 'payment complete'),
-(5, 'Peter Parker', 'Strange', 'patient@mail.com', '2022-09-09', 10, 13, 'test', 33, 100, 1, '134', 'yet');
+(5, 'Peter Parker', 'Strange', 'patient@mail.com', '2022-09-09', 10, 13, 'test', 22, 44, 22, '88', 'yet');
 
 -- --------------------------------------------------------
 
 --
--- 테이블 구조 `User_DB`
+-- Table structure for table `User_DB`
 --
 
 CREATE TABLE `User_DB` (
@@ -151,7 +153,7 @@ CREATE TABLE `User_DB` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 테이블의 덤프 데이터 `User_DB`
+-- Dumping data for table `User_DB`
 --
 
 INSERT INTO `User_DB` (`userid`, `firstName`, `lastName`, `gender`, `dob`, `email`, `pass`, `phone`, `addr`, `salt`) VALUES
@@ -187,14 +189,15 @@ INSERT INTO `User_DB` (`userid`, `firstName`, `lastName`, `gender`, `dob`, `emai
 (37, 'nak', 'Kim', 'Male', '2022-08-31', 'nakhe@hanmail.net', 'dsdfa', '636-264-1723', '경기도 성남시 수정구 복정로32번길 22 (복정동)', 'salt'),
 (38, 'testtest', 'testtest', 'Male', '2022-08-11', 'nakhe@hanmail.et', '1234', '1234', '1234', 'salt'),
 (39, 'Naktest', 'naktest', 'Female', '2022-08-26', '', 'admin', '1234', '123455', 'salt'),
-(40, 'Peter', 'Parker', 'Male', '2021-05-05', 'patient@mail.com', '1234', '12354123', '999 multiuniverse ST', 'salt');
+(40, 'Peter', 'Parker', 'Male', '2021-05-05', 'patient@mail.com', '1234', '12354123', '999 multiuniverse ST', 'salt'),
+(41, 'Nakaaaa', 'Kim', 'Male', '2022-09-10', 'hashpatient@mail.com', '$2y$09$KSOV6SD6fDoIK1wINSmJP.IsPJKodw0TXLkE5adXSDkUg/QicpqIO', '2432341', '12341234', 'salt');
 
 --
--- 덤프된 테이블의 인덱스
+-- Indexes for dumped tables
 --
 
 --
--- 테이블의 인덱스 `appointment`
+-- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`appointmentId`),
@@ -202,51 +205,51 @@ ALTER TABLE `appointment`
   ADD KEY `doctor id` (`DoctorID`);
 
 --
--- 테이블의 인덱스 `doctorrecords`
+-- Indexes for table `doctorrecords`
 --
 ALTER TABLE `doctorrecords`
   ADD PRIMARY KEY (`DoctorID`);
 
 --
--- 테이블의 인덱스 `Invoice`
+-- Indexes for table `Invoice`
 --
 ALTER TABLE `Invoice`
   ADD KEY `appoint` (`appointmentId`);
 
 --
--- 테이블의 인덱스 `User_DB`
+-- Indexes for table `User_DB`
 --
 ALTER TABLE `User_DB`
   ADD PRIMARY KEY (`userid`);
 
 --
--- 덤프된 테이블의 AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 테이블의 AUTO_INCREMENT `appointment`
+-- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
   MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- 테이블의 AUTO_INCREMENT `doctorrecords`
+-- AUTO_INCREMENT for table `doctorrecords`
 --
 ALTER TABLE `doctorrecords`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- 테이블의 AUTO_INCREMENT `User_DB`
+-- AUTO_INCREMENT for table `User_DB`
 --
 ALTER TABLE `User_DB`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- 덤프된 테이블의 제약사항
+-- Constraints for dumped tables
 --
 
 --
--- 테이블의 제약사항 `appointment`
+-- Constraints for table `appointment`
 --
 ALTER TABLE `appointment`
   ADD CONSTRAINT `doctor id` FOREIGN KEY (`DoctorID`) REFERENCES `doctorrecords` (`DoctorID`);
