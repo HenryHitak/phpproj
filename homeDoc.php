@@ -11,6 +11,7 @@
       header('location:loginDoc.php');
     }
     include 'dochead.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
