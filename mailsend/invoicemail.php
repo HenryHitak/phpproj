@@ -92,7 +92,7 @@
                 $mail->AddAttachment('ryan.jpg');
 
                 $mail->Send();
-                echo "Message Sent OK</p>\n";
+                echo "<div style='width:1000px; display:flex; flex-direction:column; text-align:center; padding: 10%; padding-left:10%'><p style='font-size:40px; color:blue;'>Message Sent OK</p>\n";
                 } catch (phpmailerException $e) {
                 echo $e->errorMessage();
                 } catch (Exception $e) {
@@ -105,7 +105,7 @@
     }
 ?>
 
-<button type="button" class='btn btn-primary' onclick="location.href='../docPayment.php';">Back</button>
+<button type="button" class='btn btn-primary' onclick="location.href='../docPayment.php';">Back</button></div>
 
 <?php include '../footer.php';?>
 
