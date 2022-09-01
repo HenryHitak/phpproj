@@ -132,14 +132,12 @@
       <input type="text" name="phone" placeholder="Phone" ><br><br>
       <input type="text" name="dateOfConsult" placeholder="Date of consult" ><br><br>
       <textarea name="details" placeholder="details about the consult" cols = "90" rows = "100"></textarea><br><br>
-      <button class="reg" type="submit" name="updateid">Update</button>
+      <button class="reg" type="submit" name="update">Update</button>
     </form>
   </div>
   <?php
-     // Creating and populating the table with the information we have in database
-    
     $id = $_GET['updateid'];
-    if(isset($_POST['submit'])){
+    if(isset($_POST['update'])){
       $dbUsername = "root";
       $dbServername = "localhost";
       $dbPass = "";
@@ -150,14 +148,15 @@
       $age = $_POST['age'];
       $dob = $_POST['dob'];
       $phone = $_POST['phone'];
-      $phone = $_POST['dateOfConsult'];
+      $dateOfConsult = $_POST['dateOfConsult'];
       $details = $_POST['details'];
       
-      $sql = "UPDATE personalmedicalhistory SET id=$id,firstName='$firstName',lastName=$lastName,age='$age',dob='$dob',phone='$phone',dateOfConsult='$dateOfConsult',details='$details' WHERE id=$id";
+      $sql = "UPDATE personalmedicalhistory SET id=$id,firstName='$firstName',lastName='$lastName',age='$age',dob='$dob',phone='$phone',dateOfConsult='$dateOfConsult',details='$details' WHERE id=$id";
       $result = $dbCon->query($sql);
-      if($result){
+      echo "<script> window.location.href='personalmedicalhistory.php';</script>";
+      if($result === true){
         echo "Updated successfully";
-        echo "<script> window.location.href='personalmedicalhistory.php';</script>";
+        //echo "<script> window.location.href='personalmedicalhistory.php';</script>";
       }else{
       die(mysqli_error($dbCon));
     } 
