@@ -17,13 +17,15 @@ if($rowNum > 0){
         $_SESSION['dname'] = "$dname";
         $_SESSION['userName'] = $name;
         $_SESSION['sessionTimeout'] = time()+600;
-        
+        print_r($name);
+        echo $hashpass;
         if(password_verify($pass,$hashpass)){
-        header('location:homeDoc.php');
-        
+            header('location:homeDoc.php');
+            
         }
         else{
             header('location:loginDoc.php');
+
         }
     }
 }
