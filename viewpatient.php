@@ -22,23 +22,30 @@
     <div class="row pt-5">
     
     <?php
-      $sql = "SELECT * FROM doctorrecords WHERE DoctorEmail = '$name'";
-      $result = mysqli_query($conn, $sql);
-      if (mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_assoc($result)){
-          $id= $row['DoctorID'];
+      $sql1 = "SELECT * FROM doctorrecords WHERE DoctorEmail = '$name'";
+      if(mysqli_query($conn, $sql1)){
+          $row = mysqli_fetch_assoc(mysqli_query($conn, $sql1));
+          $userid= $row['DoctorID'];
+          $sql2 = "SELECT * FROM appointment INNER JOIN User_DB on appointment.userid = User_DB.userid WHERE DoctorID = '$userid'";
+          if(mysqli_query($conn, $sql2)){
+            $result = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result) > 0){
+              while($row = mysqli_fetch_assoc($result)){
+                $id= $row['userid'];
           ?>
           <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><?php echo $row['DoctorName'] ?></h5>
-          <p class="card-text"><?php echo $row['DoctorSpeciality']?></p>
-          <a href="doctorprofile.php?id=<?php echo $id; ?>" class="btn btn-primary">See Profile</a> 
+          <h5 class="card-title"><?php echo $row['firstName']." ".$row['lastName']; ?></h5>
+          <p class="card-text"><?php echo $row['PatientDetails']?></p>
+          <a href="./userUpdate.php?no=<?php echo $id; ?>" class="btn btn-primary">See Profile</a> 
           <a href="appointment.php?appointId=<?php echo $id; ?>" class="btn btn-primary">Get Appointment</a> 
         </div>
       </div>
     </div>
     <?php
+              }
+            }
         }
       }
     ?>

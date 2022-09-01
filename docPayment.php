@@ -13,7 +13,7 @@
     $inresult = mysqli_query($conn,$sqls);
 
 ?>
-<div class="Users">
+<div class="container">
     <div class="pay">
         <h2>Appointment List</h2>
         <table class="table">

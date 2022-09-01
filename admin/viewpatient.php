@@ -60,7 +60,7 @@
     </div>
 
     <!--User Table -->
-    <div class="User_Table">
+    <div class="container">
         <table class="table">
             <thead>
                 <tr>
@@ -72,10 +72,8 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Date of Birth</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Address</th>
                 <th scope="col">Edit</th>
                 </tr>
             </thead>
@@ -151,10 +149,8 @@
                         <td>$fname</td>
                         <td>$lname</td>
                         <td>$gender</td>
-                        <td>$dob</td>
                         <td>$email</td>
                         <td>$phone</td>
-                        <td>$addr</td>
                         <td><a href='./userUpdate.php?no=$userid'class='btn btn-primary'>Edit</a></td>
                         ");
 

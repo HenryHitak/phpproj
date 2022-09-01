@@ -6,7 +6,7 @@
     $sql = "SELECT * FROM Invoice WHERE PatientEmail = '".$_SESSION['userName']."'";
     $result = mysqli_query($conn,$sql);
 ?>
-<div class="Users">
+<div class="container">
     <div class="pay">
         <h2>My Invoice List</h2>
         <table class="table">
