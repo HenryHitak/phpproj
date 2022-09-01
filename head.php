@@ -3,7 +3,7 @@
     if($_SESSION['sessionTimeout'] < time() || !isset($_SESSION['userName']) && !isset($_SESSION['DoctorName'])){
         session_unset();
         session_destroy();
-        header("Location: http://localhost/phpproj/loginDoc.php");
+        header("Location: http://localhost/phpproj/login.php");
     }
 ?>
 
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <a href="homeDoc.php">Hey Doc's</a>
+                        <a href="home.php">Hey Doc's</a>
                     </div>
                     <p><?php echo $_SESSION['fullname']; ?></p>
                 </div>

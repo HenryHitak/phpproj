@@ -4,6 +4,7 @@
         session_destroy();
         header("Location: http://localhost/phpproj/login.php");
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
                     <div class="logo">
                         <a href="homeDoc.php">Hey Doc's Doctor</a>
                     </div>
-                    <p>HELLO, DR. <?php echo $_SESSION['dname']; ?></p>
+                    <p>HELLO, DR. <?php echo $_SESSION['fullname']; ?></p>
                 </div>
                 <div class="col-md-10">
                     <nav class="menu">

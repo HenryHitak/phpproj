@@ -11,7 +11,7 @@
 
 <?php
      ini_set("SMTP", "aspmx.l.google.com");
-     ini_set("sendmail_from", "heydocmailtest@gmail.com");
+     ini_set("sendmail_from", "heydoc.doctor@gmail.com");
     if(isset($_GET['no'])){
         $idx = $_GET['no'];
         while($row = mysqli_fetch_array($result)) {
@@ -41,8 +41,8 @@
                 $mail->SMTPAuth   = true;
                 $mail->Port       = 465;
                 $mail->SMTPSecure = "ssl";
-                $mail->Username   = "heydocmailtest@gmail.com";
-                $mail->Password   = "";
+                $mail->Username   = "heydoc.doctor@gmail.com";
+                $mail->Password   = "plghcdcgsqoaxqjj";
 
                 $mail->AddAddress("nakhe90@gmail.com", "$Dname");
                 $mail->SetFrom('heydoc.email@gmail.com', 'HeyDoc');
