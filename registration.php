@@ -19,16 +19,16 @@ else{
     }
 }
 
-$sql = "select * from User_DB where email= '$name'";
+$sql = "select * from user_db where email= '$name'";
 $result = mysqli_query($conn,$sql);
-
 $num = mysqli_num_rows($result);
 if($num> 0){
-    echo"username already taken<br>";
-    echo "<p>If you already register here. Then <a href='signup.php'>click here</a> to log in</p>";
+    echo "<h1>If you already register here. Then <a href='signup.php'>click here</a> to log in</h1>";
 }
 else{
-    $reg = "INSERT INTO User_DB (firstName,lastName,gender,dob,email,pass,phone,addr,salt) VALUES ('$fname','$lname','$gender','$dob','$name','$pass','$phnumber','$addr','salt')";
+    $pwd = $_POST['pwd'];
+    $pwdhash = password_hash($pwd,PASSWORD_BCRYPT,["cost"=>9]);
+    $reg = "INSERT INTO user_db (firstName,lastName,gender,dob,email,pass,phone,addr,salt) VALUES ('$fname','$lname','$gender','$dob','$name','$pwdhash','$phnumber','$addr','salt')";
     $validquery=mysqli_query($conn,$reg);
     if($validquery==1){
         header('location:login.php');

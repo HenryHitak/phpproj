@@ -40,7 +40,8 @@
     <div  class="form-group">
       <div class="col-sm-10">    
       <label style="margin-top: 15px;"> Password</label> <br>      
-        <input type="password" class="form-control" placeholder="Enter your password" name="pwd">
+        <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
+        <input type="checkbox" onclick="myFunction1()">Show Password<br>
       </div>
     </div>
 
@@ -59,5 +60,14 @@
 </div>
 </body>
 </html>
-
+<script>
+  function myFunction1() {
+  var x = document.getElementById("pwd");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 <?php include 'footer.php'; ?>
