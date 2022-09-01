@@ -1,20 +1,20 @@
 <?php 
-    include 'head.php';
     include 'conn.php';
     session_start();
     $id = $_GET['up'];	
     $_SESSION['appId']= $id;
     $sql1 = " select * from appointment WHERE appointmentId = $id";
-        $result1 = mysqli_query($conn,$sql1);
-        $row=mysqli_fetch_assoc($result1);
-        $DoctorName = $row['DoctorName'];
-        $DoctorNumber = $row['DoctorNumber'];
-        $DoctorGender = $row['DoctorGender'];
-        $speciality = $row['DoctorSpeciality'];
-        $DoctorBio = $row['DoctorBio'];
-        $appointDate = $row['appointDate'];
-        $appointTime = $row['appointTime'];
-?>
+    $result1 = mysqli_query($conn,$sql1);
+    $row=mysqli_fetch_assoc($result1);
+    $DoctorName = $row['DoctorName'];
+    $DoctorNumber = $row['DoctorNumber'];
+    $DoctorGender = $row['DoctorGender'];
+    $speciality = $row['DoctorSpeciality'];
+    $DoctorBio = $row['DoctorBio'];
+    $appointDate = $row['appointDate'];
+    $appointTime = $row['appointTime'];
+    include 'head.php';
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +28,12 @@
 <body >
 <div class="container">
     <div class="form-group" >
-        <form action="updateconfirm.php" method="POST">
-        <li>Doctor Name:<?php echo $DoctorName?></li>
-        <li>Doctor Gender:<?php echo $DoctorGender?></li>
-        <li>Doctor Speciality:<?php echo $speciality?></li>
-        <li>Doctor Number:<?php echo $DoctorNumber?></li>
-        <li>Doctor's Bio:<?php echo $DoctorBio?></li>
+        <form action="updateconfirm.php" method="POST" style="display:flex; flex-direction:column;">
+        <input disabled value="Doctor Name:.<?php echo $DoctorName?>"></input>
+        <input disabled value="Doctor Gender:<?php echo $DoctorGender?>"></input>
+        <input disabled value="Doctor Speciality:<?php echo $speciality?>"></input>
+        <input disabled value="Doctor Number:<?php echo $DoctorNumber?>"></input>
+        <input disabled value="Doctor's Bio:<?php echo $DoctorBio?>"></input>
         <label for="date">Appointment Date</label>
         <input type="date" class="form-control"  name="date" id="date" value="<?php echo $appointDate?>">
         <p style="color: red;">Please select a valid date</p>
