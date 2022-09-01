@@ -42,7 +42,7 @@
                 $mail->Port       = 465;
                 $mail->SMTPSecure = "ssl";
                 $mail->Username   = "heydoc.doctor@gmail.com";
-                $mail->Password   = "plghcdcgsqoaxqjj";
+                $mail->Password   = "";
 
                 $mail->AddAddress("nakhe90@gmail.com", "$Dname");
                 $mail->SetFrom('heydoc.email@gmail.com', 'HeyDoc');
