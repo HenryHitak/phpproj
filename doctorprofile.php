@@ -16,9 +16,9 @@
     if(isset($_SESSION['userName'])){
     }
     else{
-      header('location:login.php');
+      header('location:loginDoc.php');
     }
-    include 'head.php';
+    include 'dochead.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">

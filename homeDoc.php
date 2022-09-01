@@ -1,17 +1,18 @@
 <?php
-  include 'conn.php';
+  include './conn.php';
     session_start();
     $did = $_SESSION['did'];
     $dnam = $_SESSION['dname'];
+
     if(isset($_SESSION['userName']) || isset($_SESSION['DoctorName'])){
     $name = $_SESSION['userName'];
     }
     else{
       header('location:loginDoc.php');
     }
-
     include 'dochead.php';
-    ?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +40,7 @@
           <h5 class="card-title"><?php echo $row['DoctorName'] ?></h5>
           <p class="card-text"><?php echo $row['DoctorSpeciality']?></p>
           <a href="doctorprofile.php?id=<?php echo $id; ?>" class="btn btn-primary">See Profile</a> 
-          <a href="appointment.php?appointId=<?php echo $id; ?>" class="btn btn-primary">Get Appointment</a> 
+          <!-- <a href="appointment.php?appointId=<?php echo $id; ?>" class="btn btn-primary">Get Appointment</a>  -->
         </div>
       </div>
     </div>

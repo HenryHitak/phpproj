@@ -132,11 +132,7 @@
 
                     $no = 1;
                     while($row = mysqli_fetch_array($result)) {
-<<<<<<< HEAD
-                        $userid = $row['user_num'];
-=======
                         $userid = $row['userid'];
->>>>>>> 3f0a74b217c6b8d17e4868f872b181352e3ad4d2
                         $fname = $row['firstName'];
                         $lname = $row['lastName'];
                         $dob = $row['dob'];
