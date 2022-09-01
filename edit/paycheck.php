@@ -6,6 +6,6 @@
     $insertCmd = "UPDATE Invoice SET pcd='payment complete'  where appointmentId=$no";
 
     if(mysqli_query($conns,$insertCmd)){
-        header("Location:../Payment.php");
+        header("Location:../docPayment.php");
     }
 ?>

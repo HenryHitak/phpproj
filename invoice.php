@@ -1,10 +1,12 @@
 <?php
     session_start();
     include 'conn.php';
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
 
     $query = "SELECT * FROM appointment INNER JOIN User_DB on appointment.userid = User_DB.userid";
     $result = mysqli_query($conn,$query);
-    include 'head.php';
+    include 'dochead.php';
 
 ?>
 

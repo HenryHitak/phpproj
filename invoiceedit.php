@@ -4,7 +4,9 @@
     $result = mysqli_query($conn,$query);
     session_start();
     $_SESSION['userName'];
-    include 'head.php';
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
+    include 'dochead.php';
 ?>
 
 <?php
@@ -68,7 +70,7 @@
 ?>
         <a href='./edit/invoicedelet.php' class="btn btn-danger">Del</a>
         <button type="submit" class='btn btn-primary'>Save</button>
-        <button type="button" class='btn btn-primary' onclick="location.href='./Payment.php';">Back</button>
+        <button type="button" class='btn btn-primary' onclick="location.href='./docPayment.php';">Back</button>
     </section>
 </form>
 

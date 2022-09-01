@@ -2,15 +2,16 @@
     include 'conn.php';
     session_start();
     $_SESSION['userName'];
-    include 'head.php';
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
+    include 'dochead.php';
 
-  $sql = "SELECT * FROM appointment";
-  $result = mysqli_query($conn,$sql);
+    $sql = "SELECT * FROM appointment INNER JOIN User_DB on appointment.userid = User_DB.userid WHERE DoctorID = '$did'";
+    $result = mysqli_query($conn,$sql);
 
-  $insql = "SELECT * FROM Invoice";
-  $inresult = mysqli_query($conn,$insql);
-  $insqls = "SELECT * FROM Invoice";
-  $inresults = mysqli_query($conn,$insql);
+    $sqls = "SELECT * FROM Invoice WHERE DoctortName = '$dnam'";
+    $inresult = mysqli_query($conn,$sqls);
+
 ?>
 <div class="Users">
     <div class="pay">
@@ -36,10 +37,8 @@
                     $dname = $row['DoctorName'];
                     $special = $row['DoctorSpeciality'];
                     $doctor = $row['DoctorName'];
-                    //$patient = $row['Patient'];
-                    //$pemail = $row['Pemail'];
-                    $patient = "test";
-                    $pemail = "test";
+                    $patient = $row['firstName']." ".$row['lastName'];
+                    $pemail = $row['email'];
                     $adate = $row['appointDate'];
                     $atime = $row['appointTime'];
                 
@@ -49,8 +48,8 @@
                     <td>$dname</td>
                     <td>$special</td>
                     <td>$doctor</td>
-                    <td>t$patient</td>
-                    <td>t$pemail</td>
+                    <td>$patient</td>
+                    <td>$pemail</td>
                     <td>$adate</td>
                     <td>$atime</td>
                     <td><a href='./invoice.php?no=$ano'class='btn btn-primary'>Invoice</a></td>
@@ -77,13 +76,12 @@
                 <th scope="col">Payment status</th>
                 <th scope="col">Edit invoice</th>
                 <th scope="col">Send Email</th>
-                <th scope="col">Payment</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text">
                 <?php
 
-                    while($rowss = mysqli_fetch_array($inresults)) {
+                    while($rowss = mysqli_fetch_array($inresult)) {
                         $ano = $rowss['appointmentId'];
                         $pname = $rowss['PatientName'];
                         $email = $rowss['PatientEmail'];
@@ -107,11 +105,8 @@
                         <td>$pcd</td>
                         <td><a href='./invoiceedit.php?no=$ano' class='btn btn-primary'>Edit</a></td>
 
-                        <td><a href='#' class='btn btn-warning'>Send</a></td>
+                        <td><a href='./mailsend/invoicemail.php?no=$ano' class='btn btn-warning'>Send</a></td>
 
-                        <td><a href='./mailsend/mailtest.php?no=$ano' class='btn btn-warning'>Send</a></td>
-
-                        <td><a href='./edit/paycheck.php?no=$ano' class='btn btn-dark'>Pay</a></td>
                         </tr>")
                         ;
                         
