@@ -1,13 +1,15 @@
 <?php
-  include 'conn.php';
+  include './conn.php';
     session_start();
+    $did = $_SESSION['did'];
+    $dnam = $_SESSION['dname'];
     if(isset($_SESSION['userName']) || isset($_SESSION['DoctorName'])){
     $name = $_SESSION['userName'];
     }
     else{
       header('location:login.php');
     }
-    include 'head.php';
+    include 'dochead.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
