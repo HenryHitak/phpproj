@@ -86,6 +86,13 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    height:100vh;
+  }
 </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -115,7 +122,7 @@
             </div>
         </div>
     </header>
-  <h1 class="title">Register Medical History</h1>
+  <h1 class="title">Update Register Medical History</h1>
   <div class="container1">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
       <input type="text" name="firstName" placeholder="First Name" ><br><br>
@@ -125,82 +132,19 @@
       <input type="text" name="phone" placeholder="Phone" ><br><br>
       <input type="text" name="dateOfConsult" placeholder="Date of consult" ><br><br>
       <textarea name="details" placeholder="details about the consult" cols = "90" rows = "100"></textarea><br><br>
-      <button class="reg" type="submit" name="reg">Register</button>
+      <button class="reg" type="submit" name="updateid">Update</button>
     </form>
   </div>
-  
-<div class="tableContainer">
-  <table class="table table-striped">
-    <?php
-    // Creating and populating the table with the information we have in database
-    $dbUsername = "root";
-    $dbServername = "localhost";
-    $dbPass = "";
-    $dbname = "phpproj";
-    $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbname);
-    $sql = "SELECT * FROM personalmedicalhistory";
-    $resultSelect = $dbCon->query($sql);
-    if($resultSelect->num_rows > 0){
-      echo "<tr>";
-      echo "<th>id</th>";
-      echo "<th>First Name</th>";
-      echo "<th>Last Name</th>";
-      echo "<th>Age</th>";
-      echo "<th>Day Of Birth</th>";
-      echo "<th>Phone</th>";
-      echo "<th>Date of consult</th>";
-      echo "<th>Details</th>";
-      echo "<th>Actions</th>";
-      echo "</tr>";
-      while($row = $resultSelect->fetch_assoc()){
-        echo "<tr>";
-          echo "<td>";
-            echo $row["id"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["firstName"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["lastName"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["age"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["dob"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["phone"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["dateOfConsult"];
-          echo "</td>";
-          echo "<td>";
-            echo $row["datails"];
-          echo "</td>";
-          echo "<td>";
-          echo '<a class="btn btn-primary" href="updatePersonalMedical.php?updateid='.$row["id"].'">update</a>';
-            echo '<a class="btn btn-danger" href="personalmedicalhistory.php?delete='.$row["id"].'">delete</a>';
-          echo "</td>";
-        echo "</tr>";
-      }
-    }else{
-      echo "No results";
-    }
-     // deleting from the database using delete button;
-    if (isset($_GET['delete'])){
-      $id = $_GET['delete'];
-      $dbCon->query("DELETE FROM personalmedicalhistory where id=$id");
-      echo "<script> window.location.href='personalmedicalhistory.php';</script>";
-    }
-
-    // editing the data in database with the button;
-    
-    ?>
-  </table>
   <?php
-      if($_SERVER['REQUEST_METHOD'] == "POST"){
-      // 
+     // Creating and populating the table with the information we have in database
+    
+    $id = $_GET['updateid'];
+    if(isset($_POST['submit'])){
+      $dbUsername = "root";
+      $dbServername = "localhost";
+      $dbPass = "";
+      $dbname = "phpproj";
+      $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbname);
       $firstName = $_POST['firstName'];
       $lastName = $_POST['lastName'];
       $age = $_POST['age'];
@@ -208,30 +152,17 @@
       $phone = $_POST['phone'];
       $phone = $_POST['dateOfConsult'];
       $details = $_POST['details'];
-
-      $dbUsername = "root";
-      $dbServername = "localhost";
-      $dbPass = "";
-      $dbname = "phpproj";
-      $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbname);
-      if($dbCon->connect_error){
-        die('Connection error'.$dbCon->connect_error);
-      }else{
-        // Inserting new medial register
-        $insertCmd = "INSERT INTO personalmedicalhistory (firstName,lastName,age,dob,phone,dateOfConsult,datails) values ('".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['age']."','".$_POST['dob']."','".$_POST['phone']."','".$_POST['dateOfConsult']."','".$_POST['details']."')";
-        $result = $dbCon->query($insertCmd);
+      
+      $sql = "UPDATE personalmedicalhistory SET id=$id,firstName='$firstName',lastName=$lastName,age='$age',dob='$dob',phone='$phone',dateOfConsult='$dateOfConsult',details='$details' WHERE id=$id";
+      $result = $dbCon->query($sql);
+      if($result){
+        echo "Updated successfully";
         echo "<script> window.location.href='personalmedicalhistory.php';</script>";
-        if($result === true){
-          echo "<h1 style='color: green;> Done!!!</h1>'";
-        }else{
-          echo "<h1 style='color: red;'>".$dbCon->error."</h1>";
-        }
-        $dbCon->close();
-      }
-    }
-    ?>
-  </table>
-
+      }else{
+      die(mysqli_error($dbCon));
+    } 
+  } 
+  ?>
 </div>
 </body>
 </html>
