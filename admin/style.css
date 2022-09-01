@@ -22,32 +22,3 @@ header{
     text-transform: capitalize;
 }
 
-/*viewpatient*/
-.Users{
-    padding-left: 1%;
-    padding-right: 3%;
-}
-.table_page{
-    text-align: center;
-}
-.button{
-    text-align: right;
-}
-.User_Table{width : 1400px; height: 550px; border-bottom : 1px solid black;}
-.User_Table th, .User_Table td {text-align: center;}
-
-.pay {
-    height: 300px;
-}
-
-.ueditbutton {
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid red;
-}
-
-.nak2 {
-    width: 100%;
-    display: flex !important;
-}

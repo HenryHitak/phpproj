@@ -73,6 +73,16 @@
                 ");
                 //$mail->MsgHTML(file_get_contents('contents.html'));
 
+                $no = $_GET['up'];
+
+                $conns = mysqli_connect("localhost","root","","phpproj");
+
+                $insertCmd = "UPDATE appointment SET confimation='confirmed' where appointmentId=$no";
+
+                mysqli_query($conns,$insertCmd);
+
+
+
                 $mail->AddAttachment('ryan.jpg');
 
                 $mail->Send();
