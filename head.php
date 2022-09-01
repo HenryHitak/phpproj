@@ -25,7 +25,7 @@
                     <div class="logo">
                         <a href="homeDoc.php">Hey Doc's</a>
                     </div>
-                    <p><?php echo $_SESSION['DoctorName']; ?></p>
+                    <p><?php echo $_SESSION['fullname']; ?></p>
                 </div>
                 <div class="col-md-10">
                     <nav class="menu">
