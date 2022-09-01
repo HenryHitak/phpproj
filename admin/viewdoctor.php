@@ -15,7 +15,6 @@
         <th>Doctor Name</th>
         <th>Doctor's Number</th>
         <th>Doctor Email</th>
-        <th>Doctor Password</th>
         <th>Doctor Gender</th>
         <th>Doctor Speciality</th>
         <th>Doctor Information</th>
@@ -36,7 +35,6 @@
 			echo "<td>" . $row['DoctorName'] . "</td>";
             echo "<td>" . $row['DoctorNumber'] . "</td>";
             echo "<td>" . $row['DoctorEmail'] . "</td>";
-            echo "<td>" . $row['DoctorPass'] . "</td>";
             echo "<td>" . $row['DoctorGender'] . "</td>";
             echo "<td>" . $row['DoctorSpeciality'] . "</td>";
             echo "<td>" . $row['DoctorBio'] . "</td>";

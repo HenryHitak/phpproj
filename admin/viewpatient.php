@@ -134,7 +134,7 @@
 
                     $no = 1;
                     while($row = mysqli_fetch_array($result)) {
-                        $userid = $row['user_num'];
+                        $userid = $row['userid'];
                         $fname = $row['firstName'];
                         $lname = $row['lastName'];
                         $dob = $row['dob'];
