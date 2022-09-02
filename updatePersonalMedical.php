@@ -136,8 +136,8 @@
     </form>
   </div>
   <?php
-    $id = $_GET['updateid'];
     if(isset($_POST['update'])){
+      $id = $_GET['updateid'];
       $dbUsername = "root";
       $dbServername = "localhost";
       $dbPass = "";

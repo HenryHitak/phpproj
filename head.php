@@ -34,6 +34,7 @@
                             <li><a href="checkappointments.php">Appointments</a></li>
                             <li><a href="Payment.php">Payment(Invoice)</a></li>
                             <li><a href="signout.php">Sign Out</a></li>
+                            <li><a href="personalMedicalHistory.php">Personal Medical History</a></li>
                             <li><div class="input-group">
                             <form action="search.php" method="POST" style="display:flex;">
                                 <input class="form-control rounded" name="search" style="width: 150px;"/>

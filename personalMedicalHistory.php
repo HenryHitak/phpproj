@@ -114,7 +114,7 @@
                             <li><a href="viewdoc.php">Doctor List</a></li>
                             <li><a href="checkappointments.php">Appointments</a></li>
                             <li><a href="Payment.php">Payment(Invoice)</a></li>
-                            <li><a href="personalmedicalhistory.php">Personal Medical History</a></li>
+                            <li><a href="doctorRecord.php">Doctor Record</a></li>
                         </ul>
                     </nav>
                 </div>
